@@ -1,7 +1,7 @@
 {
-    "name": "novine-react-next",
+    "name": "youth-commerce-react-next",
     "version": "3.6.0",
-    "description": "Novine - React Next eCommerce Templates",
+    "description": "Youth Commerce - React Next eCommerce Templates",
     "main": "index.js",
     "scripts": {
         "dev": "node server.js -p $PORT",
