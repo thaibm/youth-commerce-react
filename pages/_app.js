@@ -9,6 +9,7 @@ import 'react-image-lightbox/style.css';
 import '../assets/styles/style.css';
 import '../assets/styles/responsive.css';
 
+import '../lang/i18n';
 import { Provider } from 'react-redux';
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
@@ -33,13 +34,13 @@ export default withRedux(initStore)(
             return (
                 <React.Fragment>
                     <DefaultSeo
-                        title="Novine - React Next eCommerce Templates"
-                        description="Novine - React Next eCommerce Templates. This has been built with React, Next.js, Express.js, and ES6+"
+                        title="Youth Commerce"
+                        description="Youth Commerce - React Next eCommerce Templates. This has been built with React, Next.js, Express.js, and ES6+"
                         openGraph={{
                             type: 'website',
                             locale: 'en_IE',
                             url: 'https://novine-react.envytheme.com/',
-                            site_name: 'Novine - React Next eCommerce Templates',
+                            site_name: 'Youth Commerce',
                         }}
                     />
                     <Provider store={store}>

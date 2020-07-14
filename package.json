@@ -1,7 +1,7 @@
 {
     "name": "youth-commerce-react-next",
     "version": "3.6.0",
-    "description": "Youth Commerce - React Next eCommerce Templates",
+    "description": "Youth Commerce",
     "main": "index.js",
     "scripts": {
         "dev": "node server.js -p $PORT",
@@ -15,6 +15,8 @@
         "axios": "^0.19.2",
         "body-parser": "^1.19.0",
         "express": "^4.17.1",
+        "i18next": "^19.6.0",
+        "moment": "^2.27.0",
         "next": "^9.4.4",
         "next-images": "^1.4.0",
         "next-redux-wrapper": "^3.0.0",
@@ -23,7 +25,9 @@
         "react": "^16.13.1",
         "react-accessible-accordion": "^3.0.1",
         "react-dom": "^16.13.1",
+        "react-i18next": "^11.7.0",
         "react-image-lightbox": "^5.1.1",
+        "react-moment": "^0.9.7",
         "react-owl-carousel3": "^2.2.5",
         "react-redux": "^7.2.0",
         "react-slick": "^0.24.0",
