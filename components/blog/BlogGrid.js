@@ -108,7 +108,7 @@ export class BlogGrid extends Component {
 
   generatePaginationArea() {
     return (
-      <div className="col-lg-12 col-md-12">
+      <div className="col-lg-12 col-md-12" key="pagination">
         <div className="pagination-area">
           <a
             className="prev page-numbers"

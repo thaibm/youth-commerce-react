@@ -14,29 +14,54 @@ import Partner from '../components/Common/Partner';
 import InstagramPhoto from '../components/Common/InstagramPhoto';
 import Footer from '../components/Layout/Footer';
 import AddsModal from '../components/Modal/AddsModal';
+import { connect } from 'react-redux';
+import fetchProducts from '../store/product/productFetcher';
+import { bindActionCreators } from 'redux';
 
 class Index extends Component {
-    render() {
-        return (
-            <React.Fragment>
-                <Navbar />
-                <Banner />
-                <OfferArea />
-                <Products />
-                <CategoryProducts />
-                <TrendingProducts />
-                <BestSeller />
-                <Facility />
-                <Testimonials />
-                <News />
-                <Subscribe />
-                <Partner />
-                <InstagramPhoto />
-                <Footer />
-                <AddsModal />
-            </React.Fragment>
-        );
-    }
+  componentWillMount() {
+    const { fetchProducts } = this.props;
+    fetchProducts();
+  }
+  render() {
+    return (
+      <React.Fragment>
+        <Navbar />
+        {/* <Banner /> */}
+        {/* <OfferArea /> */}
+        <BestSeller />
+        {/* <Products /> */}
+        {/* <CategoryProducts /> */}
+        {/* <TrendingProducts /> */}
+        {/* <Facility /> */}
+        {/* <Testimonials /> */}
+        {/* <News /> */}
+        {/* <Subscribe /> */}
+        {/* <Partner /> */}
+        {/* <InstagramPhoto /> */}
+        <Footer />
+        {/* <AddsModal /> */}
+      </React.Fragment>
+    );
+  }
 }
 
-export default Index;
+const mapStateToProps = (state) => {
+  const {productsReducer} = state;
+  return {
+    error: productsReducer.pending,
+    products: productsReducer.products,
+    pending: productsReducer.error,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      fetchProducts: fetchProducts,
+    },
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

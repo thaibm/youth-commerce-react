@@ -114,7 +114,7 @@ export class Content extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        compare_products: state.addedItemsToCompare
+        compare_products: state.cartReducer.addedItemsToCompare
     }
 }
 

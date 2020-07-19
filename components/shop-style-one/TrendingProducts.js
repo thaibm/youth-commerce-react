@@ -197,8 +197,8 @@ class TrendingProducts extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        products: state.products,
-        CompareProducts: state.addedItemsToCompare
+        products: state.cartReducer.products,
+        CompareProducts: state.cartReducer.addedItemsToCompare
     }
 }
 

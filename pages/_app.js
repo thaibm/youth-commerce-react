@@ -6,8 +6,8 @@ import '../assets/styles/slick-theme.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-accessible-accordion/dist/fancy-example.css';
 import 'react-image-lightbox/style.css';
-import '../assets/styles/style.css';
-import '../assets/styles/responsive.css';
+import '../assets/styles/style.scss';
+import '../assets/styles/responsive.scss';
 
 import '../lang/i18n';
 import { Provider } from 'react-redux';
@@ -39,7 +39,7 @@ export default withRedux(initStore)(
                         openGraph={{
                             type: 'website',
                             locale: 'en_IE',
-                            url: 'https://novine-react.envytheme.com/',
+                            url: 'https://hangorderphapnhat.000webhostapp.com/',
                             site_name: 'Youth Commerce',
                         }}
                     />
