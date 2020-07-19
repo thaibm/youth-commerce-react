@@ -1,0 +1,45 @@
+
+
+/*================================================
+About Area CSS
+=================================================*/
+.about-area {
+    position: relative;
+    z-index: 1;
+}
+.about-content {
+    h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .signature {
+        margin: {
+            top: 35px;
+        }
+    }
+}
+.about-image {
+    position: relative;
+    padding-bottom: 160px;
+
+    .about-img1 {
+        position: relative;
+        right: -100px;
+    }
+    .about-img2 {
+        position: absolute;
+        left: 20px;
+        bottom: 0;
+    }
+}
+@keyframes movebounce {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}

@@ -1,0 +1,430 @@
+
+/*================================================
+News Details Area CSS
+=================================================*/
+.blog-details {
+    .article-header {
+        border: 1px solid #eeeeee;
+        border-bottom: none;
+        padding: 30px;
+
+        .entry-meta {
+            padding: 0;
+            margin: 0 0 17px;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                color: #777777;
+                margin-right: 15px;
+                font: {
+                    size: 14px;
+                }
+                i {
+                    color: $black-color;
+                    margin-right: 3px;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                a {
+                    display: inline-block;
+                    color: $paragraph-color;
+
+                    &:hover {
+                        color: $black-color;
+                    }
+                }
+            }
+        }
+        h3 {
+            margin-bottom: 0;
+            font: {
+                size: 19px;
+            }
+        }
+    }
+    .article-content {
+        padding: 30px 30px 35px;
+        border: 1px solid #eeeeee;
+        border-top: none;
+
+        .entry-meta {
+            padding: 0;
+            margin: 0 0 17px;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                color: #777777;
+                margin-right: 15px;
+                font: {
+                    size: 14px;
+                }
+                i {
+                    color: $black-color;
+                    margin-right: 3px;
+                }
+                &:last-child {
+                    margin-right: 0;
+                }
+                a {
+                    display: inline-block;
+                    color: $paragraph-color;
+
+                    &:hover {
+                        color: $black-color;
+                    }
+                }
+            }
+        }
+        .category {
+            padding: 0;
+            margin: 30px 0 0;
+            list-style-type: none;
+
+            li {
+                display: inline-block;
+                margin-right: 4px;
+
+                span {
+                    font-weight: 600;
+                }
+                a {
+                    border: 1px solid $black-color;
+                    border-radius: 5px;
+                    padding: 4px 15px;
+                    font-size: 13px;
+                    color: $black-color;
+                    position: relative;
+                    z-index: 1;
+
+                    &::before {
+                        position: absolute;
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+                        height: 100%;
+                        background: $black-color;
+                        z-index: -1;
+                        border-radius: 5px;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: $transition;
+                    }
+                    &:hover, &:focus {
+                        color: $white-color;
+
+                        &::before {
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                    }
+                }
+            }
+        }
+        h3 {
+            margin-bottom: 17px;
+            font: {
+                size: 19px;
+            }
+        }
+    }
+}
+blockquote {
+    background-color: #fafafa;
+    padding: 30px 30px 30px 72px !important;
+    line-height: 25px;
+    font-weight: 500;
+    position: relative;
+    margin: 20px 0;
+
+    &::before {
+        font-family: "Font Awesome 5 Free";
+        content: "\f10d";
+        position: absolute;
+        left: 30px;
+        top: 35px;
+        color: $black-color;
+        font: {
+            size: 25px;
+            weight: 900;
+            style: normal;
+        }
+    }
+    p {
+        font-weight: 600;
+    }
+    cite {
+        position: relative;
+        padding-left: 17px;
+        font: {
+            weight: 700;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: $black-color;
+            left: 0;
+            width: 10px;
+            height: 2px;
+        }
+    }
+}
+.post-controls-buttons {
+    overflow: hidden;
+    padding: 30px;
+    border: 1px solid #eeeeee;
+    margin: {
+        top: 30px;
+        bottom: 30px;
+    }
+    div {
+        &:first-child {
+            float: left;
+        }
+        &:last-child {
+            float: right;
+        }
+        a {
+            display: inline-block;
+            border: 1px solid #eeeeee;
+            padding: 11px 20px 9px;
+            color: $black-color;
+            text-transform: uppercase;
+            border-radius: 30px;
+            font: {
+                weight: 600;
+                size: 13px;
+            }
+            &:hover, &:focus {
+                border-color: $black-color;
+                color: $white-color;
+                background-color: $black-color;
+            }
+        }
+    }
+}
+.comments-area {
+    .comments-title {
+        font: {
+            size: 20px;
+        }
+        margin: {
+            bottom: 30px;
+            top: 30px;
+        }
+    }
+    ol, ul {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    .comment-list {
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+    .children {
+        margin-left: 25px;
+    }
+    .comment-body {
+        border-bottom: 1px dashed #eeeeee;
+        margin-left: 65px;
+        color: $black-color;
+        font-size: 14px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+
+        .reply {
+            margin-top: 15px;
+
+            a {
+                border: 1px solid $black-color;
+                color: $black-color;
+                display: inline-block;
+                padding: 5px 20px;
+                border-radius: 30px;
+                text-transform: uppercase;
+                font: {
+                    size: 12px;
+                    weight: 600;
+                }
+                &:hover {
+                    color: $white-color;
+                    background-color: $black-color;
+                }
+            }
+        }
+    }
+    .comment-meta {
+        margin-bottom: .8em;
+    }
+    .comment-author {
+        font-size: 15px;
+        margin-bottom: 0.4em;
+        position: relative;
+        z-index: 2;
+
+        .avatar {
+            height: 50px;
+            left: -65px;
+            position: absolute;
+            width: 50px;
+        }
+        .fn {
+            font: {
+                weight: 600;
+            }
+        }
+        .says {
+            display: none;
+        }
+    }
+    .comment-metadata {
+        color: $paragraph-color;
+        letter-spacing: 0.10em;
+        text-transform: uppercase;
+        font: {
+            size: 11px;
+            weight: 600;
+        }
+        a {
+            color: $paragraph-color;
+
+            &:hover {
+                color: $black-color;
+            }
+        }
+    }
+    .comment-content {
+        p {
+            font-size: 14px;
+        }
+    }
+    .comment-respond {
+        background: #fafafa;
+        padding: 30px 25px;
+        overflow: hidden;
+        border: 1px solid #eeeeee;
+
+        .comment-reply-title {
+            margin: {
+                top: 0;
+                bottom: 0;
+            }
+            font: {
+                size: 20px;
+            }
+            #cancel-comment-reply-link {
+                font-size: 15px;
+                display: inline-block;
+            }
+        }
+        .comment-notes {
+            font-size: 15px;
+            margin: {
+                bottom: 0;
+                top: 10px;
+            }
+            .required {
+                color: red;
+            }
+        }
+        .comment-form-comment {
+            margin-top: 15px;
+            float: left;
+            width: 100%;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: $paragraph-color;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            font: {
+                size: 13px;
+                weight: 600;
+            }
+        }
+        input[type="date"], input[type="time"], input[type="datetime-local"], input[type="week"], input[type="month"], input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="tel"], input[type="number"], textarea {
+            display: block;
+            width: 100%;
+            background-color: $white-color;
+            border: 1px solid #eeeeee;
+            padding: 0.625em 0.7375em;
+            outline: 0;
+            transition: $transition;
+
+            &:focus {
+                border-color: $black-color;
+            }
+        }
+        .comment-form-author {
+            float: left;
+            width: 50%;
+            padding-right: 10px;
+            margin-bottom: 20px;
+        }
+        .comment-form-email {
+            float: left;
+            width: 50%;
+            padding-left: 12px;
+            margin-bottom: 20px;
+        }
+        .comment-form-url {
+            float: left;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .comment-form-cookies-consent {
+            width: 100%;
+            float: left;
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 20px;
+
+            input {
+                position: absolute;
+                left: 0;
+                top: 7px;
+            }
+            label {
+                display: inline-block;
+                margin: 0;
+                color: $paragraph-color;
+                font-weight: normal;
+                text-transform: initial;
+            }
+        }
+        .form-submit {
+            float: left;
+            width: 100%;
+
+            input {
+                background: $black-color;
+                border: none;
+                color: $white-color;
+                padding: 10.5px 25px;
+                display: inline-block;
+                cursor: pointer;
+                outline: 0;
+                border-radius: 0;
+                text-transform: uppercase;
+                transition: $transition;
+                font: {
+                    weight: 600;
+                    size: 14px;
+                }
+                &:hover, &:focus {
+                    background-color: $black-color;
+                    color: $white-color;
+                }
+            }
+        }
+    }
+}

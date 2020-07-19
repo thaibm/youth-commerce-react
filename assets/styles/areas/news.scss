@@ -1,0 +1,138 @@
+
+/*================================================
+News Area CSS
+=================================================*/
+.single-news-post {
+    margin-bottom: 30px;
+    .news-content {
+        position: relative;
+        background: rgba(245, 245, 245, .95);
+        z-index: 1;
+        padding: 30px;
+        h3 {
+            margin-bottom: 0;
+            line-height: 1.4;
+            font: {
+                size: 22px;
+                weight: 700;
+            }
+            a {
+                color: $black-color;
+
+                &:hover, &:focus {
+                    color: $black-color;
+                }
+            }
+        }
+        .author {
+            display: block;
+            color: $paragraph-color;
+            margin: {
+                top: 12px;
+                bottom: 15px;
+            }
+            a {
+                display: inline-block;
+                color: $black-color;
+
+                &:hover, &:focus {
+                    color: $black-color;
+                }
+            }
+        }
+        p {
+            margin-bottom: 20px;
+        }
+    }
+}
+.single-blog-post {
+    margin-bottom: 30px;
+    background-color: $white-color;
+    box-shadow: 0 15px 15px 0 rgba(0, 0, 0, 0.06);
+
+    .blog-image {
+        position: relative;
+        overflow: hidden;
+
+        a {
+            display: block;
+
+            img {
+                transition: $transition;
+            }
+        }
+        .post-tag {
+            position: absolute;
+            left: 0;
+            top: 40px;
+            transition: $transition;
+
+            a {
+                background: $black-color;
+                color: $white-color;
+                padding: 7px 20px;
+            }
+        }
+    }
+    .blog-post-content {
+        padding: 25px;
+
+        .date {
+            color: $paragraph-color;
+            display: block;
+            text-transform: uppercase;
+            transition: $transition;
+            font: {
+                size: 13px;
+            }
+        }
+        h3 {
+            margin: {
+                top: 10px;
+                bottom: 12px;
+            }
+            line-height: 27px;
+            font: {
+                size: 18px;
+                weight: 600;
+            }
+            a {
+                color: $black-color;
+
+                &:hover, &:focus {
+                    color: $black-color;
+                }
+            }
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    }
+    .read-more-btn {
+        position: relative;
+        font-weight: 500;
+        color: $paragraph-color;
+
+        &:hover {
+            color: $black-color;
+            letter-spacing: 1px;
+        }
+    }
+    &:hover, &:focus {
+        .blog-image {
+            a {
+                img {
+                    transform: scale(1.2);
+                }
+            }
+            .post-tag {
+                top: 50px;
+    
+                a {
+                    background: $black-color;
+                    color: $white-color;
+                }
+            }
+        }
+    }
+}

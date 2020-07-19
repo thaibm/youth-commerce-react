@@ -1,0 +1,90 @@
+
+/*================================================
+Top Panel Area CSS
+=================================================*/
+.top-panel {
+    background-color: $black-color;
+    text-align: center;
+    position: relative;
+    transition: $transition;
+    height: auto;
+    padding: {
+        top: 13px;
+        bottom: 13px;
+    }
+    .panel-content {
+        transition: $transition;
+
+        p {
+            margin-bottom: 0;
+            line-height: initial;
+            color: $white-color;
+            font: {
+                size: 17px;
+                style: italic;
+            }
+            b {
+                font-size: 20px;
+            }
+            a {
+                display: inline-block;
+                line-height: initial;
+                color: $white-color;
+                position: relative;
+                font: {
+                    weight: 700;
+                    style: normal;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    width: 0;
+                    height: 2px;
+                    left: 0;
+                    transition: $transition;
+                    background: $white-color;
+                }
+                &:hover, &:focus {
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        position: relative;
+    }
+    .panel-close-btn {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        z-index: 2;
+        transform: translateY(-50%);
+        color: $white-color;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: $transition;
+        opacity: 0.9;
+
+        &:hover, &:focus {
+            color: $white-color;
+            opacity: 1;
+        }
+    }
+    &.hide {
+        opacity: 0;
+        visibility: hidden;
+        height: 0;
+        transition: $transition;
+        padding: 0;
+
+        .panel-content {
+            height: 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: $transition;
+        }
+    }
+}

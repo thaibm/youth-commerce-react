@@ -1,0 +1,76 @@
+
+/*================================================
+Best Sellers Area CSS
+=================================================*/
+.best-sellers-area {
+    padding-bottom: 30px;
+}
+.best-sellers-products-slides {
+    &.owl-theme {
+        .owl-nav {
+            margin-top: 0;
+
+            [class*=owl-] {
+                position: absolute;
+                left: -5px;
+                top: 0;
+                height: 62.5%;
+                width: 34px;
+                background-color: #dedddc;
+                font-size: 20px;
+                transition: $transition;
+                outline: 0;
+                border-radius: 0;
+                margin: 0;
+                opacity: 0;
+                visibility: hidden;
+                color: $black-color;
+
+                &:hover {
+                    background-color: $black-color;
+                    color: $white-color;
+                }
+                &.owl-next {
+                    left: auto;
+                    right: -5px;
+                }
+                i {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            }
+        }
+        &:hover {
+            .owl-nav {
+                [class*=owl-] {
+                    left: -18px;
+                    opacity: 1;
+                    visibility: visible;
+
+                    &.owl-next {
+                        left: auto;
+                        right: -18px;
+                    }
+                }
+            }
+        }
+    }
+}
+.best-sellers-products-slides-two {
+    &.owl-theme {
+        .owl-nav {
+            &.disabled + .owl-dots {
+                line-height: initial;
+                margin: {
+                    bottom: 30px;
+                    top: 10px;
+                }
+            }
+        }
+    }
+}

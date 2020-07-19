@@ -1,0 +1,60 @@
+
+/*================================================
+Products Offer Area CSS
+=================================================*/
+.products-offer-area {
+    position: relative;
+    z-index: 1;
+    background: {
+        image: url(../../../images/offer-bg.jpg);
+        position: center center;
+        size: cover;
+        attachment: fixed;
+        repeat: no-repeat;
+    }
+    &.bg-image2 {
+        background: {
+            image: url(../../../images/offer-bg2.jpg);
+        }
+    }
+}
+.products-offer-content {
+    max-width: 550px;
+    border: 1px solid $white-color;
+    text-align: center;
+    padding: 70px 40px;
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: $white-color;
+        z-index: -1;
+        margin: 10px;
+    }
+    span {
+        font-size: 16px;
+        display: block;
+    }
+    h1 {
+        font: {
+            size: 55px;
+            weight: 700;
+        }
+        margin: {
+            top: 0;
+            bottom: 5px;
+        }
+    }
+    p {
+        line-height: initial;
+        margin-bottom: 25px;
+        font-size: 18px;
+        color: $black-color;
+    }
+}

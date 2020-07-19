@@ -1,0 +1,68 @@
+/*btn(primary&light)*/
+.btn {
+    border: 1px solid transparent;
+    padding: 11px 25px;
+    line-height: initial;
+    border-radius: 0;
+    transition: $transition;
+    text-transform: uppercase;
+    font: {
+        weight: 400;
+        size: $font-size;
+    }
+    &.disabled, &:disabled {
+        opacity: 1;
+    }
+}
+.btn-primary {
+    color: $white-color;
+    background-color: $black-color;
+    border-color: $black-color;
+
+    &.disabled, &:disabled {
+        color: $white-color;
+        background-color: $black-color;
+        border-color: $black-color;
+    }
+    &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
+        box-shadow: unset;
+        background-color: transparent;
+        color: $black-color;
+        border-color: $black-color;
+    }
+    &:not(:disabled):not(.disabled).active:focus, &:not(:disabled):not(.disabled):active:focus, .show>&.dropdown-toggle:focus {
+        box-shadow: unset;
+    }
+    &:hover, &:focus {
+        box-shadow: unset;
+        background-color: transparent;
+        color: $black-color;
+        border-color: $black-color;
+    }
+}
+.btn-light {
+    background-color: transparent;
+    color: $black-color;
+    border-color: $black-color;
+
+    &.disabled, &:disabled {
+        background-color: transparent;
+        color: $black-color;
+        border-color: $black-color;
+    }
+    &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
+        box-shadow: unset;
+        color: $white-color;
+        background-color: $black-color;
+        border-color: $black-color;
+    }
+    &:not(:disabled):not(.disabled).active:focus, &:not(:disabled):not(.disabled):active:focus, .show>&.dropdown-toggle:focus {
+        box-shadow: unset;
+    }
+    &:hover, &:focus {
+        box-shadow: unset;
+        color: $white-color;
+        background-color: $black-color;
+        border-color: $black-color;
+    }
+}

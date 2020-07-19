@@ -1,0 +1,290 @@
+
+/*================================================
+Offer Area CSS
+=================================================*/
+.offer-area {
+    .section-title {
+        background-color: transparent;
+        padding: 0;
+
+        h2 {
+            padding-left: 0;
+            font-weight: 700;
+
+            .dot {
+                display: none;
+            }
+        }
+    }
+}
+.offer-box {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 100%;
+        background-color: $white-color;
+        opacity: 0.4;
+        transition: $transition;
+        z-index: 2;
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -100%;
+        background-color: $white-color;
+        opacity: 0.4;
+        transition: $transition;
+        z-index: 2;
+    }
+    .category {
+        position: absolute;
+        left: 0;
+        transition: $transition;
+        right: 0;
+        bottom: 25px;
+        border: 1px solid #ececec;
+        padding: 20px;
+        margin: {
+            left: 40px;
+            right: 40px;
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: #ededed;
+            opacity: 0.94;
+            z-index: 1;
+            margin: 6px;
+        }
+        h4 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+    }
+    img {
+        transition: $transition;
+    }
+    .box-inner {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        padding: 60px 15px;
+        right: 0;
+        bottom: 0;
+        border: 1px solid #ededed;
+        margin: 30px;
+        z-index: 2;
+        opacity: 0;
+        visibility: hidden;
+        transition: $transition;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            background: #ededed;
+            opacity: 0.94;
+            z-index: 1;
+            margin: 6px;
+            z-index: -1;
+        }
+        h3 {
+            font-size: 17px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 0;
+            margin-bottom: 0;
+            list-style-type: none;
+
+            li {
+                margin-bottom: 10px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+                a {
+                    font-size: 13px;
+                    color: $paragraph-color;
+                    position: relative;
+                    display: inline-block;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        width: 0;
+                        height: 1px;
+                        background: $black-color;
+                        transition: $transition;
+                    }
+                    &:hover, &:focus {
+                        color: $black-color;
+
+                        &::before {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &:hover, &:focus {
+        img {
+            transform: scale(1.3);
+        }
+        &::after {
+            left: 100%;
+        }
+        &::before {
+            left: -100%;
+        }
+        .category {
+            opacity: 0;
+            visibility: hidden;
+            bottom: 0;
+        }
+        .box-inner {
+            opacity: 1;
+            visibility: visible;
+            top: 0;
+        }
+    }
+}
+.single-offer-box {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    border-radius: 2px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $black-color;
+        opacity: .50;
+        z-index: 2;
+        border-radius: 2px;
+    }
+    img {
+        transition: $transition;
+        border-radius: 2px;
+    }
+    .offer-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        z-index: 3;
+
+        h3 {
+            color: $white-color;
+            font: {
+                size: 19px;
+                weight: 700;
+            }
+            margin-bottom: 6px;
+        }
+        span {
+            display: block;
+            color: $white-color;
+        }
+    }
+    a {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+    }
+    &:hover {
+        img {
+            transform: scale(1.3);
+        }
+    }
+}
+.offer-slides {
+    &.owl-theme {
+        .owl-dots {
+            margin-top: 30px;
+        }
+        .owl-nav {
+            margin-top: 0;
+
+            [class*=owl-] {
+                position: absolute;
+                left: -5px;
+                top: 0;
+                height: 83.4%;
+                width: 34px;
+                background-color: #dedddc;
+                font-size: 20px;
+                transition: $transition;
+                outline: 0;
+                border-radius: 0;
+                margin: 0;
+                opacity: 0;
+                visibility: hidden;
+                color: $black-color;
+
+                &:hover {
+                    background-color: $black-color;
+                    color: $white-color;
+                }
+                &.owl-next {
+                    left: auto;
+                    right: -5px;
+                }
+                i {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    text-align: center;
+                }
+            }
+        }
+        &:hover {
+            .owl-nav {
+                [class*=owl-] {
+                    left: -18px;
+                    opacity: 1;
+                    visibility: visible;
+
+                    &.owl-next {
+                        left: auto;
+                        right: -18px;
+                    }
+                }
+            }
+        }
+    }
+}

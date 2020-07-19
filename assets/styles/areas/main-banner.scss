@@ -1,0 +1,158 @@
+/*================================================
+Main Banner Area CSS
+=================================================*/
+.main-banner {
+    height: 600px;
+    position: relative;
+    z-index: 1;
+    background: {
+        color: #f1f1f1;
+        size: cover;
+        repeat: no-repeat;
+        position: center center;
+    }
+    &.item-bg1 {
+        background-image: url(../../../images/main-banner1.jpg);
+    }
+    &.item-bg2 {
+        background-image: url(../../../images/main-banner2.jpg);
+    }
+    &.item-bg3 {
+        background-image: url(../../../images/main-banner3.jpg);
+    }
+    &.item-bg4 {
+        background-image: url(../../../images/main-banner4.jpg);
+    }
+}
+.main-banner-content {
+    max-width: 520px;
+
+    span {
+        font-size: $font-size;
+        color: $paragraph-color;
+        display: block;
+    }
+    h1 {
+        font: {
+            size: 34px;
+            weight: 700;
+        }
+        text-transform: uppercase;
+        margin: {
+            top: 8px;
+            bottom: 15px;
+        }
+    }
+    p {
+        line-height: initial;
+        font-size: 18px;
+        color: $black-color;
+        margin-bottom: 35px;
+    }
+    .btn-primary {
+        margin-right: 15px;
+    }
+    &.white-color {
+        span {
+            color: $white-color;
+        }
+        h1 {
+            color: $white-color;
+        }
+        p {
+            color: $white-color;
+        }
+        .btn-primary {
+            &:hover, &:focus {
+                background-color: $white-color;
+                color: $black-color;
+                border-color: $white-color;
+            }
+        }
+    }
+}
+.home-slides {
+    &.owl-theme {
+        .owl-nav {
+            margin-top: 0;
+
+            [class*=owl-] {
+                position: absolute;
+                left: 160px;
+                top: 50%;
+                transform: translateY(-50%);
+                margin: 0;
+                outline: 0;
+                width: 45px;
+                height: 45px;
+                line-height: 39px;
+                transition: $transition;
+                background-color: #959595;
+                color: $white-color;
+                border-radius: 50%;
+                opacity: 1;
+                visibility: hidden;
+
+                &:hover, &:focus {
+                    background-color: $black-color;
+                }
+                &.owl-next {
+                    left: auto;
+                    right: 160px;
+                }
+            }
+        }
+        &:hover {
+            .owl-nav {
+                [class*=owl-] {
+                    opacity: 1;
+                    visibility: visible;
+                    left: 140px;
+                    transition: $transition;
+    
+                    &.owl-next {
+                        left: auto;
+                        right: 140px;
+                    }
+                }
+            }
+        }
+        .owl-dots {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+        }
+    }
+}
+.main-banner-two {
+    padding-top: 30px;
+    position: relative;
+    z-index: 1;
+    background-color: #f1f1f1;
+}
+.main-banner-three {
+    height: 820px;
+}
+.banner-image {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+
+    img {
+        width: unset !important;
+        display: inline-block !important;
+    }
+    .circle {
+        width: 470px;
+        height: 470px;
+        border-radius: 50%;
+        background-color: $white-color;
+        z-index: -1;
+        position: absolute;
+        left: 0;
+        top: 5%;
+        right: 0;
+        margin: 0 auto;
+    }
+}

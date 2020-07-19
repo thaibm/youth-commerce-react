@@ -1,0 +1,394 @@
+/*================================================
+Navbar Area CSS
+=================================================*/
+.navbar-area {
+    .is-sticky {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 999;
+        box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.06);
+        background-color: $white-color !important;
+        -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+        animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+    }
+}
+.navbar-brand {
+    position: relative;
+    top: -1px;
+    padding: {
+        top: 0;
+        bottom: 0;
+    }
+}
+.comero-nav {
+    background-color: $white-color;
+    padding: {
+        top: 3px;
+        bottom: 3px;
+    }
+    .navbar {
+        position: inherit;
+        padding: {
+            right: 0;
+            top: 0;
+            left: 0;
+            bottom: 0;
+        }
+        ul {
+            padding-left: 0;
+            list-style-type: none;
+            margin-bottom: 0;
+        }
+        .navbar-nav {
+            margin-left: auto;
+            margin-right: auto;
+
+            .nav-item {
+                padding: {
+                    top: 20px;
+                    bottom: 20px;
+                    left: 0;
+                    right: 0;
+                }
+                &.p-relative {
+                    position: relative;
+                }
+                a {
+                    font: {
+                        size: 14px;
+                    }
+                    color: $black-color;
+                    text-transform: uppercase;
+                    padding: {
+                        left: 0;
+                        right: 0;
+                        top: 0;
+                        bottom: 0;
+                    }
+                    margin: {
+                        left: 10px;
+                        right: 10px;
+                    }
+                    &:hover, &:focus, &.active {
+                        color: $black-color;
+                    }
+                    i {
+                        font-size: 11px;
+                    }
+                }
+                &:hover, &:focus, &.active {
+                    a {
+                        color: $black-color;
+                    }
+                }
+                .dropdown-menu {
+                    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+                    background: $white-color;
+                    position: absolute;
+                    border: none;
+                    top: 80px;
+                    left: 0;
+                    width: 250px;
+                    z-index: 99;
+                    display: block;
+                    opacity: 0;
+                    visibility: hidden;
+                    border-radius: 0;
+                    transition: all 0.3s ease-in-out;
+                    padding: {
+                        top: 20px;
+                        left: 5px;
+                        right: 5px;
+                        bottom: 20px;
+                    }
+                    li {
+                        position: relative;
+                        padding: 0;
+
+                        a {
+                            text-transform: capitalize;
+                            padding: 8px 15px;
+                            margin: 0;
+                            display: block;
+                            color: $paragraph-color;
+                            font: {
+                                size: 14px;
+                            }
+                            &:hover, &:focus, &.active {
+                                color: $black-color;
+                            }
+                        }
+                        .dropdown-menu {
+                            left: 220px;
+                            top: 0;
+                            opacity: 0;
+                            visibility: hidden;
+
+                            li {
+                                a {
+                                    color: $paragraph-color;
+                                    text-transform: capitalize;
+
+                                    &:hover, &:focus, &.active {
+                                        color: $black-color;
+                                    }
+                                }
+                            }
+                            li {
+                                position: relative;
+                                padding: 0;
+        
+                                a {
+                                    text-transform: capitalize;
+                                    padding: 8px 15px;
+                                    margin: 0;
+                                    display: block;
+                                    color: $paragraph-color;
+                                    font: {
+                                        size: 14px;
+                                    }
+                                    &:hover, &:focus, &.active {
+                                        color: $black-color;
+                                    }
+                                }
+                                .dropdown-menu {
+                                    left: auto;
+                                    right: 240px;
+                                    top: 0;
+                                    opacity: 0;
+                                    visibility: hidden;
+        
+                                    li {
+                                        a {
+                                            color: $black-color;
+                                            text-transform: capitalize;
+        
+                                            &:hover, &:focus, &.active {
+                                                color: $black-color;
+                                            }
+                                        }
+                                    }
+                                }
+                                &.active {
+                                    a {
+                                        color: $black-color;
+                                    }
+                                }
+                                &:hover {
+                                    .dropdown-menu {
+                                        opacity: 1;
+                                        visibility: visible;
+                                        top: -15px;
+                                    }
+                                }
+                            }
+                        }
+                        &.active {
+                            a {
+                                color: $black-color;
+                            }
+                        }
+                        &:hover {
+                            .dropdown-menu {
+                                opacity: 1;
+                                visibility: visible;
+                                top: -15px;
+                            }
+                        }
+                    }
+                }
+                &:hover {
+                    .dropdown-menu {
+                        opacity: 1;
+                        visibility: visible;
+                        top: 100%;
+                    }
+                }
+                &:last-child {
+                    .dropdown-menu {
+                        left: auto;
+                        right: 0;
+                    }
+                }
+                &.megamenu {
+                    .dropdown-menu {
+                        padding: 35px 0;
+                        position: absolute;
+                        top: auto;
+                        left: 0;
+                        margin-top: 23px;
+                        width: 100%;
+
+                        .submenu-title {
+                            color: $black-color;
+                            font-size: 15px;
+                            text-transform: uppercase;
+                            margin-bottom: 20px;
+                        }
+                        .megamenu-submenu {
+                            li {
+                                margin-top: 12px;
+
+                                &:first-child {
+                                    margin-top: 0;
+                                }
+                                a {
+                                    padding: 0;
+                                }
+                            }
+                            &.top-brands {
+                                margin: {
+                                    left: -5px;
+                                    top: -5px;
+                                    right: -5px;
+                                    bottom: -5px;
+                                }
+                                li {
+                                    display: inline-block;
+                                    position: relative;
+                                    z-index: 1;
+                                    padding: {
+                                        left: 5px;
+                                        top: 5px;
+                                        bottom: 5px;
+                                        right: 5px;
+                                    }
+                                    &::before {
+                                        content: '';
+                                        position: absolute;
+                                        left: 0;
+                                        top: 0;
+                                        width: 100%;
+                                        height: 100%;
+                                        z-index: -1;
+                                        border: 1px solid #eeeeee;
+                                        transition: $transition;
+                                    }
+                                    &:hover {
+                                        &::before {
+                                            border-color: $black-color;
+                                        }
+                                    }
+                                }
+                            }
+                            .aside-trending-products {
+                                overflow: hidden;
+                                position: relative;
+                                text-align: center;
+                                                     
+                                .category {
+                                    position: absolute;
+                                    left: 0;
+                                    transition: $transition;
+                                    right: 0;
+                                    bottom: 0;
+                                    background-color: $white-color;
+                                    padding: 20px;
+                                    margin: {
+                                        left: 10px;
+                                        right: 10px;
+                                    }
+                                    h4 {
+                                        font-size: 15px;
+                                        text-transform: uppercase;
+                                        margin-bottom: 0;
+                                        position: relative;
+                                        z-index: 1;
+                                    }
+                                }
+                                img {
+                                    transition: $transition;
+                                    width: 100%;
+                                }
+                                a {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    z-index: 3;
+                                }
+                                &:hover, &:focus {
+                                    img {
+                                        transform: scale(1.3);
+                                    }
+                                    .category {
+                                        bottom: 10px;
+                                    }
+                                }
+                                &:not(:first-child) {
+                                    margin-top: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .others-option {
+        padding-left: 0;
+        list-style-type: none;
+        margin-bottom: 0;
+
+        .option-item {
+            display: inline-block;
+            position: relative;
+            margin-right: 17px;
+            line-height: initial;
+    
+            a {
+                color: $black-color;
+                text-transform: uppercase;
+                position: relative;
+    
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background: $black-color;
+                    transition: $transition;
+                }
+                &:hover, &:focus {
+                    color: $black-color;
+    
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+            &::before {
+                content: '';
+                position: absolute;
+                right: -9px;
+                top: 0.5px;
+                width: 1px;
+                height: 12px;
+                background: #888888;
+            }
+            &:last-child {
+                margin-right: 0;
+    
+                &::before {
+                    display: none;
+                }
+            }
+            .search-btn {
+                cursor: pointer;
+            }
+            .close-btn {
+                cursor: pointer;
+                display: none;
+
+                &.active {
+                    display: block;
+                }
+            }
+        }
+    }
+}

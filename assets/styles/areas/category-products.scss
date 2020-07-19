@@ -1,0 +1,84 @@
+
+/*================================================
+Category Products Area CSS
+=================================================*/
+.category-products-area {
+    padding-bottom: 30px;
+
+    &.pt-60 {
+        padding-bottom: 0;
+        margin-bottom: -30px;
+    }
+}
+.single-category-box {
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $black-color;
+        transition: $transition;
+        opacity: .45;
+        z-index: 2;
+    }
+    img {
+        transition: $transition;
+    }
+    .category-content {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        z-index: 3;
+
+        h3 {
+            margin-bottom: 0;
+            color: $white-color;
+            font: {
+                size: 20px;
+                weight: 700;
+            }
+        }
+        .btn {
+            margin-top: 22px;
+        }
+        .btn-light {
+            background-color: transparent;
+            color: $white-color;
+            border-color: $white-color;
+        
+            &:not(:disabled):not(.disabled).active, &:not(:disabled):not(.disabled):active, .show>&.dropdown-toggle {
+                color: $black-color;
+                background-color: $white-color;
+                border-color: $white-color;
+            }
+            &:hover, &:focus {
+                color: $black-color;
+                background-color: $white-color;
+                border-color: $white-color;
+            }
+        }
+    }
+    .link-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+    }
+    &:hover, &:focus {
+        img {
+            transform: scale(1.1);
+        }
+    }
+}

@@ -1,0 +1,43 @@
+
+/*================================================
+Subscribe Area CSS
+=================================================*/
+.subscribe-area {
+    border-top: 1px solid #f5f5f5;
+}
+.newsletter-content {
+    h3 {
+        font-size: 20px;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+    }
+}
+.newsletter-form {
+    position: relative;
+
+    button {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 45px;
+        border: none;
+        background-color: $black-color;
+        color: $white-color;
+        outline: 0;
+        font-size: 16px;
+        cursor: pointer;
+        transition: $transition;
+        padding: 0 20px;
+
+        &:hover, &:focus {
+            background-color: #000000;
+        }
+    }
+    .validation-danger {
+        color: red;
+        margin-top: 10px;
+    }
+    .validation-success {
+        margin-top: 10px;
+    }
+}

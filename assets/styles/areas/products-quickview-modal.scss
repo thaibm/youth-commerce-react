@@ -1,0 +1,368 @@
+
+/*================================================
+Products QuickView Modal Area CSS
+=================================================*/
+.productQuickView {
+    .modal-dialog {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .modal-content {
+        border: none;
+        padding: 40px;
+        border-radius: 0;
+
+        button {
+            &.close {
+                position: absolute;
+                right: 0;
+                top: 0;
+                outline: 0;
+                opacity: 1;
+                color: $black-color;
+                transition: $transition;
+                line-height: 35px;
+                padding: 0;
+                margin: 0;
+                font-size: 20px;
+                width: 35px;
+                text-shadow: unset;
+                height: 35px;
+
+                &:hover {
+                    background-color: red;
+                    color: $white-color;
+                }
+            }
+        }
+        .productQuickView-image {
+            img {
+                width: 100%;
+            }
+        }
+        .product-content {
+            h3 {
+                font-size: 22px;
+                margin-bottom: 8px;
+
+                a {
+                    color: $black-color;
+
+                    &:hover {
+                        color: $black-color;
+                    }
+                }
+            }
+            .price {
+                margin-bottom: 5px;
+                
+                span {
+                    display: inline-block;
+                    font-size: 18px;
+                    color: $black-color;
+                }
+            }
+            .product-review {
+                .rating {
+                    display: inline-block;
+                    padding-right: 10px;
+
+                    i {
+                        color: #ffba0a;
+                        margin: 0 2px;
+                    }
+                }
+                .rating-count {
+                    display: inline-block;
+                    color: $black-color;
+                    border-bottom: 1px solid $black-color;
+                    line-height: initial;
+                }
+            }
+            .product-info {
+                list-style-type: none;
+                padding: 0;
+                margin: {
+                    top: 20px;
+                    bottom: 0;
+                }
+                li {
+                    font-size: 16px;
+                    color: $black-color;
+                    margin-bottom: 8px;
+
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                    span {
+                        color: $paragraph-color;
+                    }
+                    a {
+                        display: inline-block;
+                        font-weight: 500;
+                        color: $black-color;
+
+                        &:hover {
+                            color: $black-color;
+                        }
+                    }
+                }
+            }
+            .product-color-switch {
+                margin-top: 8px;
+
+                h4 {
+                    font-size: 16px;
+                    color: $paragraph-color;
+                    margin-bottom: 6px;
+                }
+                ul {
+                    list-style-type: none;
+                    margin: {
+                        bottom: 0;
+                        top: -4px;
+                        left: -4px;
+                    }
+                    padding: {
+                        left: 0;
+                    }
+                    li {
+                        display: inline-block;
+                        margin: {
+                            left: 4px;
+                            top: 4px;
+                        }
+                        a {
+                            display: inline-block;
+                            position: relative;
+                            border: 1px solid transparent;
+                            width: 25px;
+                            height: 25px;
+                            border-radius: 50%;
+        
+                            &::before {
+                                position: absolute;
+                                content: '';
+                                left: 0;
+                                right: 0;
+                                top: 0;
+                                bottom: 0;
+                                background: #eeeeee;
+                                border-radius: 50%;
+                                margin: 2px;
+                                transition: $transition;
+                            }
+                            &:hover, &:focus {
+                                border-color: $black-color;
+                            }
+                            &.color-white {
+                                &::before {
+                                    background: $white-color;
+                                    border: 1px solid #eeeeee;
+                                }
+                            }
+                            &.color-black {
+                                &::before {
+                                    background: $black-color;
+                                }
+                            }
+                            &.color-red {
+                                &::before {
+                                    background: red;
+                                }
+                            }
+                            &.color-blue {
+                                &::before {
+                                    background: blue;
+                                }
+                            }
+                            &.color-green {
+                                &::before {
+                                    background: green;
+                                }
+                            }
+                            &.color-yellow {
+                                &::before {
+                                    background: yellow;
+                                }
+                            }
+                            &.color-yellowgreen {
+                                &::before {
+                                    background: yellowgreen;
+                                }
+                            }
+                            &.color-pink {
+                                &::before {
+                                    background: pink;
+                                }
+                            }
+                            &.color-violet {
+                                &::before {
+                                    background: violet;
+                                }
+                            }
+                            &.color-teal {
+                                &::before {
+                                    background: teal;
+                                }
+                            }
+                            &.color-plum {
+                                &::before {
+                                    background: plum;
+                                }
+                            }
+                            &.color-lime {
+                                &::before {
+                                    background: lime;
+                                }
+                            }
+                            &.color-blueviolet {
+                                &::before {
+                                    background: blueviolet;
+                                }
+                            }
+                        }
+                        &.active {
+                            a {
+                                border-color: $black-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .product-size-wrapper {
+                margin: {
+                    top: 8px;
+                    bottom: 25px;
+                }
+                h4 {
+                    font-size: 16px;
+                    color: $paragraph-color;
+                    margin-bottom: 8px;
+                }
+                ul {
+                    list-style-type: none;
+                    margin: {
+                        bottom: 0;
+                        top: -8px;
+                        left: -8px;
+                    }
+                    padding: {
+                        left: 0;
+                    }
+                    li {
+                        display: inline-block;
+                        margin: {
+                            left: 8px;
+                            top: 8px;
+                        }
+                        a {
+                            width: 40px;
+                            height: 35px;
+                            display: inline-block;
+                            line-height: 35px;
+                            border: 1px solid #eeeeee;
+                            color: #858585;
+                            text-align: center;
+
+                            &:hover, &:focus {
+                                border-color: $black-color;
+                                color: $black-color;
+                            }
+                        }
+                        &.active {
+                            a {
+                                border-color: $black-color;
+                                color: $black-color;
+                            }
+                        }
+                    }
+                }
+            }
+            .product-add-to-cart {
+                .input-counter {
+                    max-width: 130px;
+                    min-width: 130px;
+                    margin-right: 10px;
+                    text-align: center;
+                    display: inline-block;
+                    position: relative;    
+
+                    span {
+                        position: absolute;
+                        top: 0;
+                        background-color: transparent;
+                        cursor: pointer;
+                        color: #d0d0d0;
+                        width: 40px;
+                        height: 100%;
+                        line-height: 50px;
+                        transition: $transition;
+
+                        &.minus-btn {
+                            left: 0;
+                        }
+                        &.plus-btn {
+                            right: 0;
+                        }
+                        &:hover {
+                            color: $black-color;
+                        }
+                    }
+                    input {
+                        height: 45px;
+                        color: $black-color;
+                        outline: 0;
+                        display: block;
+                        border: none;
+                        background-color: #f8f8f8;
+                        text-align: center;
+                        width: 100%;
+                        font: {
+                            size: 17px;
+                            weight: 600;
+                        }
+                        &::placeholder {
+                            color: $black-color;
+                        }
+                    }
+                }
+                .btn {
+                    height: 45px;
+                    top: -2px;
+                    position: relative;
+
+                    i {
+                        margin-right: 2px;
+                    }
+                }
+            }
+            .view-full-info {
+                margin-top: 25px;
+                color: $black-color;
+                line-height: initial;
+                display: inline-block;
+                position: relative;
+                font: {
+                    weight: 600;
+                    size: 15px;
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background: $black-color;
+                    transition: $transition;
+                }
+                &:hover {
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
