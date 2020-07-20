@@ -159,7 +159,7 @@ class BestSeller extends Component {
 
                     <div
                       className="product-price"
-                      dangerouslySetInnerHTML={{ __html: data.price }}
+                      dangerouslySetInnerHTML={{ __html: data.priceHtml }}
                     >
                       {/* <span className="new-price"></span> */}
                     </div>

@@ -28,9 +28,9 @@ class Index extends Component {
       <React.Fragment>
         <Navbar />
         {/* <Banner /> */}
-        {/* <OfferArea /> */}
+        <OfferArea />
         <BestSeller />
-        {/* <Products /> */}
+        <Products />
         {/* <CategoryProducts /> */}
         {/* <TrendingProducts /> */}
         {/* <Facility /> */}

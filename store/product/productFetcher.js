@@ -14,7 +14,8 @@ const fetchProducts = () => {
         return {
           id: pro.id,
           title: pro.name,
-          price: pro.price_html,
+          price: pro.price,
+          priceHtml: pro.price_html,
           image: pro.images[0].src,
           imageHover: pro.images[0].src,
           quickView: pro.images[1].src,
