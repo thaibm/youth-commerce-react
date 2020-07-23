@@ -72,7 +72,7 @@ class QuickView extends Component {
                                 <div className="product-content">
                                     <h3>
                                         <Link href="#">
-                                            <a>Belted chino trousers polo</a>
+                                            <a>Product QuickView Modal</a>
                                         </Link>
                                     </h3>
 

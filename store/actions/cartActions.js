@@ -10,10 +10,10 @@ import {
 } from './action-types/cart-actions'
 
 //add cart action
-export const addToCart = (id) => {
+export const addToCart = (product) => {
     return {
         type: ADD_TO_CART,
-        id
+        product
     }
 }
 //remove item action

@@ -5,17 +5,26 @@ import Link from 'next/link';
 import ReactTooltip from 'react-tooltip';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
+import { bindActionCreators } from 'redux';
+import { fetchProducts } from '../../store/product/productFetcher';
+
+const BEST_SELLER_TAG_ID = 17;
 
 class BestSeller extends Component {
   state = {
     modalOpen: false,
     modalImage: '',
     price: 0,
-    idd: null
+    idd: null,
   };
-  async componentDidMount() {}
-  handleAddToCart = (id) => {
-    this.props.addToCart(id);
+
+  componentWillMount() {
+    const { fetchProducts } = this.props;
+    fetchProducts();
+  }
+
+  handleAddToCart = (product) => {
+    this.props.addToCart(product);
 
     toast.success('Added to the cart', {
       position: 'bottom-left',
@@ -93,6 +102,7 @@ class BestSeller extends Component {
       idd: id,
     });
   };
+  
   render() {
     let { products } = this.props;
     const { modalOpen } = this.state;
@@ -177,7 +187,7 @@ class BestSeller extends Component {
                         className="btn btn-light"
                         onClick={(e) => {
                           e.preventDefault();
-                          this.handleAddToCart(data.id);
+                          this.handleAddToCart(data);
                         }}
                       >
                         Add to Cart
@@ -216,12 +226,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart: (id) => {
-      dispatch(addToCart(id));
+    addToCart: (product) => {
+      dispatch(addToCart(product));
     },
     addToCompare: (id) => {
       dispatch(addToCompare(id));
     },
+    fetchProducts: bindActionCreators(fetchProducts, dispatch),
   };
 };
 
