@@ -24,18 +24,18 @@ class Index extends Component {
     return (
       <React.Fragment>
         <Navbar />
-        {/* <Banner /> */}
+        <Banner />
         <OfferArea />
         <BestSeller />
         <Products />
-        {/* <CategoryProducts /> */}
-        {/* <TrendingProducts /> */}
-        {/* <Facility /> */}
-        {/* <Testimonials /> */}
-        {/* <News /> */}
-        {/* <Subscribe /> */}
-        {/* <Partner /> */}
-        {/* <InstagramPhoto /> */}
+        <CategoryProducts />
+        <TrendingProducts />
+        <Facility />
+        <Testimonials />
+        <News />
+        <Subscribe />
+        <Partner />
+        <InstagramPhoto />
         <Footer />
         {/* <AddsModal /> */}
       </React.Fragment>
