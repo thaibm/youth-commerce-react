@@ -6,7 +6,7 @@ import ReactTooltip from 'react-tooltip';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
 import { bindActionCreators } from 'redux';
-import { fetchProducts } from '../../store/product/productFetcher';
+import { fetchProducts, fetchCurrentCurrency } from '../../store/product/productFetcher';
 
 const BEST_SELLER_TAG_ID = 17;
 
@@ -19,8 +19,9 @@ class BestSeller extends Component {
   };
 
   componentWillMount() {
-    const { fetchProducts } = this.props;
+    const { fetchProducts, fetchCurrentCurrency } = this.props;
     fetchProducts();
+    fetchCurrentCurrency();
   }
 
   handleAddToCart = (product) => {
@@ -233,6 +234,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addToCompare(id));
     },
     fetchProducts: bindActionCreators(fetchProducts, dispatch),
+    fetchCurrentCurrency: bindActionCreators(fetchCurrentCurrency, dispatch)
   };
 };
 

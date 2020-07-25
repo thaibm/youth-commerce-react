@@ -3,7 +3,10 @@ import {
   fetchProductsSuccess,
   fetchProductsError,
 } from './productActions';
-import { getAllProducts, getAllProductsByTag } from '../../api/modules/woo-commerce';
+import {
+  getAllProducts,
+  getCurrentCurrency,
+} from '../../api/modules/woo-commerce';
 
 const mapProducts = (pro) => {
   return {
@@ -15,7 +18,7 @@ const mapProducts = (pro) => {
     imageHover: pro.images[0].src,
     quickView: pro.images[1].src,
   };
-}
+};
 
 export const fetchProducts = (params) => {
   return async (dispatch) => {
@@ -27,5 +30,15 @@ export const fetchProducts = (params) => {
     } catch (error) {
       dispatch(fetchProductsError(error));
     }
+  };
+};
+
+export const fetchCurrentCurrency = () => {
+  return async (dispatch) => {
+    dispatch(fetchProductsPending());
+    try {
+      const response = await getCurrentCurrency();
+      dispatch(fetchCurrencySuccess(response.data));
+    } catch(error){}
   };
 };

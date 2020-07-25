@@ -7,3 +7,7 @@ export const getAllProducts = (params) => API({
     params
 });
 
+export const getCurrentCurrency = () => API({
+    url: 'wc/v3/data/currencies/current',
+    method: 'GET'
+});
