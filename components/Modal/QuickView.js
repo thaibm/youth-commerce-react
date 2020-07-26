@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
-import { addQuantityWithNumber } from '../../store/actions/cartActions';
+import { addQuantityWithNumber } from '../../store/cart/cartActions';
 import { ToastContainer, toast } from 'react-toastify';
 
 class QuickView extends Component {

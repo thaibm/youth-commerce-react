@@ -13,7 +13,7 @@ import '../lang/i18n';
 import { Provider } from 'react-redux';
 import App from 'next/app';
 import withRedux from 'next-redux-wrapper';
-import { initStore } from '../store/reducers/cartReducer';
+import { initStore } from '../store/store';
 import { DefaultSeo } from 'next-seo';
 import GoTop from '../components/Shared/GoTop';
 

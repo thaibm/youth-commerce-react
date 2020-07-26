@@ -1,8 +1,3 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunkMiddleware from 'redux-thunk';
-import { productsReducer } from '../product/productReducer';
-
 import { 
     ADD_TO_CART,
     REMOVE_ITEM,
@@ -14,7 +9,7 @@ import {
     ADD_TO_COMPARE,
     REMOVE_ITEM_FROM_COMPARE,
     SUB_SHIPPING
-} from '../actions/action-types/cart-actions'
+} from './cartActions'
 
 const initState = {
     products: [
@@ -458,7 +453,7 @@ const initState = {
     shipping: 0
 }
 
-const cartReducer = (state = initState, action) => {
+export const cartReducer = (state = initState, action) => {
    
     if(action.type === ADD_TO_CART){
         let addedItem = action.product;
@@ -601,17 +596,4 @@ const cartReducer = (state = initState, action) => {
     else {
         return state
     }
-}
-
-const rootReducer = combineReducers({
-    cartReducer,
-    productsReducer
-})
-
-export const initStore = (initialState = initState) => {
-    return createStore(
-        rootReducer,
-        initialState,
-        composeWithDevTools(applyMiddleware(thunkMiddleware))
-    )
 }

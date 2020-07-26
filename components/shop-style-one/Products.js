@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, addToCompare } from '../../store/actions/cartActions';
+import { addToCart, addToCompare } from '../../store/cart/cartActions';
 import Link from 'next/link';
 import ReactTooltip from 'react-tooltip';
 import { ToastContainer, toast, Slide } from 'react-toastify';

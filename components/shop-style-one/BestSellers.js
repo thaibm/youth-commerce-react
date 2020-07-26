@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addToCart, addToCompare } from '../../store/actions/cartActions';
+import { addToCart, addToCompare } from '../../store/cart/cartActions';
 import Link from 'next/link';
 import ReactTooltip from 'react-tooltip';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
 import { bindActionCreators } from 'redux';
-import { fetchProducts, fetchCurrentCurrency } from '../../store/product/productFetcher';
+import { fetchProducts } from '../../store/product/productFetcher';
+import { fetchCurrentCurrency } from '../../store/setting/settingFetcher';
 
 const BEST_SELLER_TAG_ID = 17;
 
@@ -216,11 +217,11 @@ class BestSeller extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const { productsReducer } = state;
+  const { productReducer } = state;
   return {
-    error: productsReducer.pending,
-    products: productsReducer.products,
-    pending: productsReducer.error,
+    error: productReducer.pending,
+    products: productReducer.products,
+    pending: productReducer.error,
     CompareProducts: state.cartReducer.addedItemsToCompare,
   };
 };

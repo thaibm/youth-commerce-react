@@ -5,7 +5,6 @@ import {
 } from './productActions';
 import {
   getAllProducts,
-  getCurrentCurrency,
 } from '../../api/modules/woo-commerce';
 
 const mapProducts = (pro) => {
@@ -30,15 +29,5 @@ export const fetchProducts = (params) => {
     } catch (error) {
       dispatch(fetchProductsError(error));
     }
-  };
-};
-
-export const fetchCurrentCurrency = () => {
-  return async (dispatch) => {
-    dispatch(fetchProductsPending());
-    try {
-      const response = await getCurrentCurrency();
-      dispatch(fetchCurrencySuccess(response.data));
-    } catch(error){}
   };
 };

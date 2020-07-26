@@ -1,7 +1,6 @@
 export const FETCH_PRODUCTS_PENDING = 'FETCH_PRODUCTS_PENDING';
 export const FETCH_PRODUCTS_SUCCESS = 'FETCH_PRODUCTS_SUCCESS';
 export const FETCH_PRODUCTS_ERROR = 'FETCH_PRODUCTS_ERROR';
-export const FETCH_CURRENCY_SUCCESS = 'FETCH_CURRENCY_SUCCESS';
 
 export function fetchProductsPending() {
   return {
@@ -23,9 +22,3 @@ export function fetchProductsError(error) {
   };
 }
 
-export function fetchCurrencySuccess(currency) {
-  return {
-    type: FETCH_CURRENCY_SUCCESS,
-    currency: currency,
-  };
-}

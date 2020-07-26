@@ -1,13 +1,12 @@
-import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, FETCH_CURRENCY_SUCCESS } from "./productActions";
+import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR } from "./productActions";
 
 const initialState = {
     pending: false,
     products: [],
-    currency: null,
     error: null
 }
 
-export const productsReducer = (state = initialState, action) => {
+export const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS_PENDING:
       return {
@@ -25,12 +24,6 @@ export const productsReducer = (state = initialState, action) => {
         ...state,
         pending: false,
         error: action.error,
-      };
-    case FETCH_CURRENCY_SUCCESS:
-      return {
-        ...state,
-        pending: false,
-        currency: action.currency,
       };
     default:
       return state;
