@@ -1,4 +1,4 @@
-import { FETCH_CURRENCY_SUCCESS } from "./settingActions";
+import { FETCH_CURRENCY_SUCCESS, FETCH_CURRENCY_POSITION_SUCCESS } from "./settingActions";
 
 const initialState = {
   currency: null,
@@ -10,8 +10,12 @@ export const settingReducer = (state = initialState, action) => {
     case FETCH_CURRENCY_SUCCESS:
       return {
         ...state,
-        pending: false,
         currency: action.currency,
+      };
+    case FETCH_CURRENCY_POSITION_SUCCESS:
+      return {
+        ...state,
+        currencyPosition: action.position,
       };
     default:
       return state;

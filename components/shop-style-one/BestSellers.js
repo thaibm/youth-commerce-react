@@ -7,7 +7,7 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
 import { bindActionCreators } from 'redux';
 import { fetchProducts } from '../../store/product/productFetcher';
-import { fetchCurrentCurrency } from '../../store/setting/settingFetcher';
+import { fetchCurrentCurrency, fetchCurrencyPosition } from '../../store/setting/settingFetcher';
 
 const BEST_SELLER_TAG_ID = 17;
 
@@ -20,9 +20,10 @@ class BestSeller extends Component {
   };
 
   componentWillMount() {
-    const { fetchProducts, fetchCurrentCurrency } = this.props;
+    const { fetchProducts, fetchCurrentCurrency, fetchCurrencyPosition } = this.props;
     fetchProducts();
     fetchCurrentCurrency();
+    fetchCurrencyPosition();
   }
 
   handleAddToCart = (product) => {
@@ -235,7 +236,8 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addToCompare(id));
     },
     fetchProducts: bindActionCreators(fetchProducts, dispatch),
-    fetchCurrentCurrency: bindActionCreators(fetchCurrentCurrency, dispatch)
+    fetchCurrentCurrency: bindActionCreators(fetchCurrentCurrency, dispatch),
+    fetchCurrencyPosition: bindActionCreators(fetchCurrencyPosition, dispatch),
   };
 };
 

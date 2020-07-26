@@ -5,7 +5,7 @@ import {
 } from './productActions';
 import {
   getAllProducts,
-} from '../../api/modules/woo-commerce';
+} from '../../api/modules/product';
 
 const mapProducts = (pro) => {
   return {
