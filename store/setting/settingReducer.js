@@ -2,7 +2,7 @@ import { FETCH_CURRENCY_SUCCESS, FETCH_CURRENCY_POSITION_SUCCESS } from "./setti
 
 const initialState = {
   currency: null,
-  currencyPosition: '',
+  currencyPosition: ''
 };
 
 export const settingReducer = (state = initialState, action) => {
