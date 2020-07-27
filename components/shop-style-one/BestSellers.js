@@ -18,10 +18,8 @@ class BestSeller extends Component {
   };
 
   componentWillMount() {
-    const { fetchProducts, fetchCurrentCurrency, fetchCurrencyPosition } = this.props;
+    const { fetchProducts } = this.props;
     fetchProducts();
-    fetchCurrentCurrency();
-    fetchCurrencyPosition();
   }
 
   handleAddToCart = (product) => {
@@ -233,9 +231,7 @@ const mapDispatchToProps = (dispatch) => {
     addToCompare: (id) => {
       dispatch(addToCompare(id));
     },
-    fetchProducts: bindActionCreators(fetchProducts, dispatch),
-    fetchCurrentCurrency: bindActionCreators(fetchCurrentCurrency, dispatch),
-    fetchCurrencyPosition: bindActionCreators(fetchCurrencyPosition, dispatch),
+    fetchProducts: bindActionCreators(fetchProducts, dispatch)
   };
 };
 
