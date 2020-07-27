@@ -18,37 +18,36 @@ import { DefaultSeo } from 'next-seo';
 import GoTop from '../components/Shared/GoTop';
 
 export default withRedux(initStore)(
-    class MyApp extends App {
-        
-        static async getInitialProps ({ Component, ctx }) {
-            return {
-                pageProps: Component.getInitialProps
-                    ? await Component.getInitialProps(ctx)
-                    : {}
-            }
-        }
-
-        render () {
-            const { Component, pageProps, store } = this.props
-
-            return (
-                <React.Fragment>
-                    <DefaultSeo
-                        title="Youth Commerce"
-                        description="Youth Commerce - React Next eCommerce Templates. This has been built with React, Next.js, Express.js, and ES6+"
-                        openGraph={{
-                            type: 'website',
-                            locale: 'en_IE',
-                            url: 'https://hangorderphapnhat.000webhostapp.com/',
-                            site_name: 'Youth Commerce',
-                        }}
-                    />
-                    <Provider store={store}>
-                        <Component {...pageProps} />
-                    </Provider>
-                    <GoTop scrollStepInPx="50" delayInMs="10.50" />
-                </React.Fragment>
-            );
-        }
+  class MyApp extends App {
+    static async getInitialProps({ Component, ctx }) {
+      return {
+        pageProps: Component.getInitialProps
+          ? await Component.getInitialProps(ctx)
+          : {},
+      };
     }
-)
+
+    render() {
+      const { Component, pageProps, store } = this.props;
+
+      return (
+        <React.Fragment>
+          <DefaultSeo
+            title="Youth Commerce"
+            description="Youth Commerce - React Next eCommerce Templates. This has been built with React, Next.js, Express.js, and ES6+"
+            openGraph={{
+              type: 'website',
+              locale: 'en_IE',
+              url: 'https://hangorderphapnhat.000webhostapp.com/',
+              site_name: 'Youth Commerce',
+            }}
+          />
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+          <GoTop scrollStepInPx="50" delayInMs="10.50" />
+        </React.Fragment>
+      );
+    }
+  }
+);
