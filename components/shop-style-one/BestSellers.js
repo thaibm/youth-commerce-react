@@ -9,8 +9,6 @@ import { bindActionCreators } from 'redux';
 import { fetchProducts } from '../../store/product/productFetcher';
 import { fetchCurrentCurrency, fetchCurrencyPosition } from '../../store/setting/settingFetcher';
 
-const BEST_SELLER_TAG_ID = 17;
-
 class BestSeller extends Component {
   state = {
     modalOpen: false,
