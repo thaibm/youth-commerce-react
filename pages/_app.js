@@ -16,6 +16,10 @@ import withRedux from 'next-redux-wrapper';
 import { initStore } from '../store/store';
 import { DefaultSeo } from 'next-seo';
 import GoTop from '../components/Shared/GoTop';
+import {
+  fetchCurrentCurrency,
+  fetchCurrencyPosition,
+} from '../store/setting/settingFetcher';
 
 export default withRedux(initStore)(
   class MyApp extends App {
@@ -25,6 +29,12 @@ export default withRedux(initStore)(
           ? await Component.getInitialProps(ctx)
           : {},
       };
+    }
+
+    componentWillMount() {
+      const { store } = this.props;
+      fetchCurrentCurrency(store.dispatch);
+      fetchCurrencyPosition(store.dispatch);
     }
 
     render() {
