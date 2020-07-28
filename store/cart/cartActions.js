@@ -41,10 +41,10 @@ export const addQuantity = (id) => {
 }
 
 //add qt action with quantity number
-export const addQuantityWithNumber = (id, qty) => {
+export const addQuantityWithNumber = (product, qty) => {
     return {
         type: ADD_QUANTITY_WITH_NUMBER,
-        id,
+        product,
         qty
     }
 }
