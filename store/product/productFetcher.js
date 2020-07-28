@@ -15,7 +15,7 @@ const mapProducts = (pro) => {
     priceHtml: pro.price_html,
     image: pro.images[0].src,
     imageHover: pro.images[0].src,
-    quickView: pro.images[1].src,
+    quickViewImage: pro.images[1].src,
   };
 };
 

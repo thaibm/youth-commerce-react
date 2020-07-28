@@ -490,9 +490,9 @@ export const cartReducer = (state = initState, action) => {
     }
 
     if(action.type === ADD_QUANTITY_WITH_NUMBER){
-        let addedItem = state.products.find(item => item.id === action.id)
+        let addedItem = action.product;
         //check if the action id exists in the addedItems
-        let existed_item = state.addedItems.find(item=> action.id === item.id)
+        let existed_item = state.addedItems.find(item=> item.id === addedItem.id);
         if(existed_item)
         {
             addedItem.quantity += action.qty

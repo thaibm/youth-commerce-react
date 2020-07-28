@@ -7,14 +7,15 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
 import { bindActionCreators } from 'redux';
 import { fetchProducts } from '../../store/product/productFetcher';
-import { fetchCurrentCurrency, fetchCurrencyPosition } from '../../store/setting/settingFetcher';
+import {
+  fetchCurrentCurrency,
+  fetchCurrencyPosition,
+} from '../../store/setting/settingFetcher';
 
 class BestSeller extends Component {
   state = {
     modalOpen: false,
-    modalImage: '',
-    price: 0,
-    idd: null,
+    quickViewProduct: null,
   };
 
   componentWillMount() {
@@ -94,14 +95,12 @@ class BestSeller extends Component {
     this.setState({ modalOpen: false });
   };
 
-  handleModalData = (image, price, id) => {
+  handleModalData = (product) => {
     this.setState({
-      modalImage: image,
-      price: price,
-      idd: id,
+      product: product,
     });
   };
-  
+
   render() {
     let { products } = this.props;
     const { modalOpen } = this.state;
@@ -117,14 +116,14 @@ class BestSeller extends Component {
           </div>
 
           <div className="row">
-            {products.map((data, idx) => (
+            {products.map((product, idx) => (
               <div className="col-lg-3 col-sm-6 col-6" key={idx}>
                 <div className="single-product-box">
                   <div className="product-image">
                     <Link href="/product-details">
                       <a>
-                        <img src={data.image} alt="image" />
-                        <img src={data.imageHover} alt="image" />
+                        <img src={product.image} alt="image" />
+                        <img src={product.imageHover} alt="image" />
                       </a>
                     </Link>
 
@@ -137,11 +136,7 @@ class BestSeller extends Component {
                             onClick={(e) => {
                               e.preventDefault();
                               this.openModal();
-                              this.handleModalData(
-                                data.quickView,
-                                data.price,
-                                data.id
-                              );
+                              this.handleModalData(product);
                             }}
                           >
                             <i className="far fa-eye"></i>
@@ -155,20 +150,20 @@ class BestSeller extends Component {
                           </a>
                         </Link>
                       </li>
-                      <li>{this.compareButton(data.id)}</li>
+                      <li>{this.compareButton(product.id)}</li>
                     </ul>
                   </div>
 
                   <div className="product-content">
                     <h3>
                       <Link href="/product-details">
-                        <a>{data.title}</a>
+                        <a>{product.title}</a>
                       </Link>
                     </h3>
 
                     <div
                       className="product-price"
-                      dangerouslySetInnerHTML={{ __html: data.priceHtml }}
+                      dangerouslySetInnerHTML={{ __html: product.priceHtml }}
                     >
                       {/* <span className="new-price"></span> */}
                     </div>
@@ -201,9 +196,7 @@ class BestSeller extends Component {
         {modalOpen ? (
           <QuickView
             closeModal={this.closeModal}
-            idd={this.state.idd}
-            image={this.state.modalImage}
-            price={this.state.price}
+            product={this.state.product}
           />
         ) : (
           ''
@@ -231,7 +224,7 @@ const mapDispatchToProps = (dispatch) => {
     addToCompare: (id) => {
       dispatch(addToCompare(id));
     },
-    fetchProducts: bindActionCreators(fetchProducts, dispatch)
+    fetchProducts: bindActionCreators(fetchProducts, dispatch),
   };
 };
 
