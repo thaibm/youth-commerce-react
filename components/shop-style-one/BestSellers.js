@@ -7,10 +7,6 @@ import { ToastContainer, toast, Slide } from 'react-toastify';
 import QuickView from '../Modal/QuickView';
 import { bindActionCreators } from 'redux';
 import { fetchProducts } from '../../store/product/productFetcher';
-import {
-  fetchCurrentCurrency,
-  fetchCurrencyPosition,
-} from '../../store/setting/settingFetcher';
 
 class BestSeller extends Component {
   state = {
