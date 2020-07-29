@@ -118,8 +118,8 @@ class BestSeller extends Component {
                   <div className="product-image">
                     <Link href="/product-details">
                       <a>
-                        <img src={product.image} alt="image" />
-                        <img src={product.imageHover} alt="image" />
+                        <img src={product.imageSrc} alt="image" />
+                        <img src={product.imageHoverSrc} alt="image" />
                       </a>
                     </Link>
 
