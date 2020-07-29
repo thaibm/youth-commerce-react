@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { addQuantityWithNumber } from '../../store/actions/cartActions';
+import { addQuantityWithNumber } from '../../store/cart/cartActions';
 import { ToastContainer, toast } from 'react-toastify';
 import SizeGuide from './SizeGuide';
 import Shipping from './Shipping';

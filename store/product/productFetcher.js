@@ -3,19 +3,25 @@ import {
   fetchProductsSuccess,
   fetchProductsError,
 } from './productActions';
-import {
-  getAllProducts,
-} from '../../api/modules/product';
+import { getAllProducts } from '../../api/modules/product';
 
 const mapProducts = (pro) => {
+  const imageSrc =
+    pro.images.length && pro.images[0]?.src
+      ? pro.images[0]?.src
+      : '../../images/img1.jpg';
+  const quickViewImageSrc =
+    pro.images.length && pro.images[1] && pro.images[1].src
+      ? pro.images[1].src
+      : '../../images/quick-view-img.jpg';
   return {
     id: pro.id,
     title: pro.name,
     price: pro.price,
     priceHtml: pro.price_html,
-    image: pro.images[0].src,
-    imageHover: pro.images[0].src,
-    quickViewImage: pro.images[1].src,
+    imageSrc,
+    imageHoverSrc: imageSrc,
+    quickViewImageSrc,
   };
 };
 

@@ -64,7 +64,7 @@ class QuickView extends Component {
                         <div className="row align-items-center">
                             <div className="col-lg-6 col-md-6">
                                 <div className="productQuickView-image">
-                                    <img src={product.quickViewImage} alt="image" /> 
+                                    <img src={product.quickViewImageSrc} alt="image" /> 
                                 </div>
                             </div>
 
@@ -202,7 +202,7 @@ class QuickView extends Component {
                                         </button>
                                     </div>
 
-                                    <Link href="#">
+                                    <Link href="/product-details">
                                         <a className="view-full-info">View full info</a>
                                     </Link>
                                 </div>
