@@ -4,7 +4,7 @@ import Router from 'next/router'
 import StripeCheckout from 'react-stripe-checkout';
 import { connect } from 'react-redux';
 import { ToastContainer, toast, Zoom } from 'react-toastify';
-import { resetCart } from '../../store/actions/cartActions';
+import { resetCart } from '../../store/cart/cartActions';
 
 class Payments extends React.Component {
     handleClick = () => {
