@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'next/link';
 import { connect } from 'react-redux';
-import { addToCart, removeItemFromCompare } from '../../store/actions/cartActions';
+import { addToCart, removeItemFromCompare } from '../../store/cart/cartActions';
 import { ToastContainer, toast, Slide } from 'react-toastify';
 
 export class Content extends Component {
