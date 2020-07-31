@@ -9,11 +9,11 @@ const mapProducts = (pro) => {
   const imageSrc =
     pro.images.length && pro.images[0]?.src
       ? pro.images[0]?.src
-      : '../../images/img1.jpg';
+      : require('../../images/img1.jpg');
   const quickViewImageSrc =
     pro.images.length && pro.images[1] && pro.images[1].src
       ? pro.images[1].src
-      : '../../images/quick-view-img.jpg';
+      : require('../../images/quick-view-img.jpg');
   return {
     id: pro.id,
     title: pro.name,
