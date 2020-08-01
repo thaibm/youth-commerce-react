@@ -54,14 +54,16 @@ class QuickView extends Component {
     render() {
         const { closeModal, product } = this.props;
         return (
-            <div className="modal fade productQuickView show" style={{paddingRight: '16px', display: 'block'}}>
+            <div className="modal fade productQuickView show" 
+                style={{paddingRight: '16px', display: 'block'}}>
                 <ToastContainer />
+                <div className="overlay" onClick={closeModal}></div>
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <button type="button" onClick={closeModal} className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true"><i className="fas fa-times"></i></span>
                         </button>
-                        <div className="row align-items-center">
+                        <div className="row">
                             <div className="col-lg-6 col-md-6">
                                 <div className="productQuickView-image">
                                     <img src={product.quickViewImageSrc} alt="image" /> 
@@ -70,7 +72,7 @@ class QuickView extends Component {
 
                             <div className="col-lg-6 col-md-6">
                                 <div className="product-content">
-                                    <h3>
+                                    <h3 className="product-title">
                                         <Link href="#">
                                             <a>{product.title}</a>
                                         </Link>
@@ -94,7 +96,7 @@ class QuickView extends Component {
                                         </Link>
                                     </div>
 
-                                    <ul className="product-info">
+                                    {/* <ul className="product-info">
                                         <li>
                                             <span>Vendor:</span> <Link href="#"><a>Lereve</a></Link>
                                         </li>
@@ -104,9 +106,11 @@ class QuickView extends Component {
                                         <li>
                                             <span>Product Type:</span> <Link href="#"><a>T-Shirt</a></Link>
                                         </li>
-                                    </ul>
+                                    </ul> */}
 
-                                    <div className="product-color-switch">
+                                    <div className="product-description" dangerouslySetInnerHTML={{__html: product.shortDescription}}></div>
+
+                                    {/* <div className="product-color-switch">
                                         <h4>Color:</h4>
 
                                         <ul>
@@ -136,9 +140,9 @@ class QuickView extends Component {
                                                 </Link>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="product-size-wrapper">
+                                    {/* <div className="product-size-wrapper">
                                         <h4>Size:</h4>
 
                                         <ul>
@@ -168,7 +172,7 @@ class QuickView extends Component {
                                                 </Link>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> */}
 
                                     <div className="product-add-to-cart">
                                         <div className="input-counter">
