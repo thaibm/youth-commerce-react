@@ -22,6 +22,8 @@ const mapProducts = (pro) => {
     imageSrc,
     imageHoverSrc: imageSrc,
     quickViewImageSrc,
+    description: pro.description,
+    shortDescription: pro.short_description
   };
 };
 
