@@ -177,7 +177,7 @@ class BestSeller extends Component {
                         className="btn btn-light"
                         onClick={(e) => {
                           e.preventDefault();
-                          this.handleAddToCart(data);
+                          this.handleAddToCart(product);
                         }}
                       >
                         Add to Cart

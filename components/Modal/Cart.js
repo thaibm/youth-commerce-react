@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
+import NumberFormat from 'react-number-format';
 
 class Cart extends Component {
   state = {
@@ -10,6 +11,39 @@ class Cart extends Component {
   closeCart = () => {
     this.props.onClick(this.state.display);
   };
+
+  renderCurrency(rawHTML) {
+    return React.createElement('span', {
+      dangerouslySetInnerHTML: { __html: rawHTML },
+    });
+  }
+
+  renderCost(ammount) {
+    const { currency, currencyPosition } = this.props;
+    if (currencyPosition === 'left') {
+      return (
+        <span className="price">
+          {this.renderCurrency(currency.symbol)}
+          <NumberFormat
+            value={ammount}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
+        </span>
+      );
+    } else {
+      return (
+        <span className="price">
+          <NumberFormat
+            value={ammount}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
+          {this.renderCurrency(currency.symbol)}
+        </span>
+      );
+    }
+  }
 
   render() {
     let { products, total } = this.props;
@@ -21,6 +55,7 @@ class Cart extends Component {
           paddingRight: '16px',
         }}
       >
+        <div className="overlay" onClick={this.closeCart}></div>
         <div className="modal-dialog" role="document">
           <div className="modal-content">
             <button
@@ -41,7 +76,7 @@ class Cart extends Component {
                   ? products.map((product, idx) => (
                       <div className="product-cart" key={idx}>
                         <div className="product-image">
-                          <img src={product.image} alt="image" />
+                          <img src={product.imageSrc} alt="image" />
                         </div>
 
                         <div className="product-content">
@@ -50,11 +85,11 @@ class Cart extends Component {
                               <a>{product.title}</a>
                             </Link>
                           </h3>
-                          <span>Blue / XS</span>
+                          <span>Best Sellers (Dummy Tag)</span>
                           <div className="product-price">
                             <span>{product.quantity}</span>
                             <span>x</span>
-                            <span className="price">${product.price}</span>
+                            {this.renderCost(product.price)}
                           </div>
                         </div>
                       </div>
@@ -65,7 +100,7 @@ class Cart extends Component {
               <div className="product-cart-subtotal">
                 <span>Subtotal</span>
 
-                <span className="subtotal">${total}</span>
+                <span className="subtotal">{this.renderCost(total)}</span>
               </div>
 
               <div className="product-cart-btn">
@@ -88,7 +123,8 @@ const mapStateToProps = (state) => {
   return {
     products: state.cartReducer.addedItems,
     total: state.cartReducer.total,
-    addedItems: state.cartReducer.addedItems,
+    currency: state.settingReducer.currency,
+    currencyPosition: state.settingReducer.currencyPosition,
   };
 };
 
