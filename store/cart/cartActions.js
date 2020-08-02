@@ -1,3 +1,4 @@
+export const INITIAL_CART_STATE = 'INITIAL_CART_STATE';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const SUB_QUANTITY = 'SUB_QUANTITY';
@@ -11,6 +12,13 @@ export const ADD_TO_COMPARE = 'ADD_TO_COMPARE';
 export const REMOVE_ITEM_FROM_COMPARE = 'REMOVE_ITEM_FROM_COMPARE';
 export const SUB_SHIPPING = 'SUB_SHIPPING';
 
+//add cart action
+export const initialCartState = (cartState) => {
+    return {
+        type: INITIAL_CART_STATE,
+        cartState
+    }
+}
 //add cart action
 export const addToCart = (product) => {
     return {

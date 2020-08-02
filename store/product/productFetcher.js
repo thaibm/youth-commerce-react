@@ -23,7 +23,7 @@ const mapProducts = (pro) => {
     imageHoverSrc: imageSrc,
     quickViewImageSrc,
     description: pro.description,
-    shortDescription: pro.short_description
+    shortDescription: pro.short_description,
   };
 };
 

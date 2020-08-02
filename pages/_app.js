@@ -20,6 +20,8 @@ import {
   fetchCurrentCurrency,
   fetchCurrencyPosition,
 } from '../store/setting/settingFetcher';
+import { getCartState } from '../utils/localStorage';
+import { initialCartState } from '../store/cart/cartActions';
 
 export default withRedux(initStore)(
   class MyApp extends App {
@@ -35,6 +37,14 @@ export default withRedux(initStore)(
       const { store } = this.props;
       fetchCurrentCurrency(store.dispatch);
       fetchCurrencyPosition(store.dispatch);
+    }
+
+    componentDidMount() {
+      const { store } = this.props;
+      const cartState = getCartState();
+      if (cartState) {
+        store.dispatch(initialCartState(cartState));
+      }
     }
 
     render() {
