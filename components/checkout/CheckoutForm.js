@@ -28,7 +28,7 @@ function CheckoutForm({total, shipping}) {
         firstName: {
             required: true,
             validator: {
-            regEx: /^[a-zA-Z]+$/,
+            regEx: /^[a-zA-Z\ ]+$/,
             error: "Invalid first name format."
             }
         },
@@ -36,7 +36,7 @@ function CheckoutForm({total, shipping}) {
         lastName: {
             required: true,
             validator: {
-            regEx: /^[a-zA-Z]+$/,
+            regEx: /^[a-zA-Z\ ]+$/,
             error: "Invalid last name format."
             }
         },
@@ -55,20 +55,20 @@ function CheckoutForm({total, shipping}) {
             }
         },
 
-        state: {
-            required: true,
-            validator: {
-                error: "Invalid last name format."
-            }
-        },
+        // state: {
+        //     required: true,
+        //     validator: {
+        //         error: "Invalid last name format."
+        //     }
+        // },
 
-        zip: {
-            required: true,
-            validator: {
-                regEx: /^\d{5}$|^\d{5}-\d{4}$/,
-                error: "Invalid zip format, use like 12345."
-            }
-        },
+        // zip: {
+        //     required: true,
+        //     validator: {
+        //         regEx: /^\d{5}$|^\d{5}-\d{4}$/,
+        //         error: "Invalid zip format, use like 12345."
+        //     }
+        // },
 
         email: {
             required: true,
@@ -81,8 +81,8 @@ function CheckoutForm({total, shipping}) {
         phone: {
             required: true,
             validator: {
-                regEx: /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{9})$/,
-                error: "Invalid phone number format use like +2923432432432."
+                regEx: /^\+[0-9]?()[0-9](\s|\S)(\d[0-9]{8})$/,
+                error: "Invalid phone number format use like +2912345678911."
             }
         }
     };
@@ -117,7 +117,7 @@ function CheckoutForm({total, shipping}) {
                                 <h3 className="title">Billing Details</h3>
 
                                 <div className="row">
-                                    <div className="col-lg-12 col-md-12">
+                                    {/* <div className="col-lg-12 col-md-12">
                                         <div className="form-group">
                                             <label>Country <span className="required">*</span></label>
                                             <div className="select-box">
@@ -134,7 +134,7 @@ function CheckoutForm({total, shipping}) {
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="col-lg-6 col-md-6">
                                         <div className="form-group">
@@ -199,7 +199,7 @@ function CheckoutForm({total, shipping}) {
                                         </div>
                                     </div>
 
-                                    <div className="col-lg-6 col-md-6">
+                                    {/* <div className="col-lg-6 col-md-6">
                                         <div className="form-group">
                                             <label>State / County <span className="required">*</span></label>
                                             <input 
@@ -211,9 +211,9 @@ function CheckoutForm({total, shipping}) {
                                             />
                                             {state.state.error && <p style={errorStyle}>{state.state.error}</p>}
                                         </div>
-                                    </div>
+                                    </div> */}
 
-                                    <div className="col-lg-6 col-md-6">
+                                    {/* <div className="col-lg-6 col-md-6">
                                         <div className="form-group">
                                             <label>Postcode / Zip <span className="required">*</span></label>
                                             <input 
@@ -225,7 +225,7 @@ function CheckoutForm({total, shipping}) {
                                             />
                                             {state.zip.error && <p style={errorStyle}>{state.zip.error}</p>}
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                     <div className="col-lg-6 col-md-6">
                                         <div className="form-group">

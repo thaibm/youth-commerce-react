@@ -5,6 +5,9 @@ import {
 import {
   fetchCurrencySuccess,
   fetchCurrencyPositionSuccess,
+  fetchSettingsPending,
+  fetchSettingsSuccess,
+  fetchSettingsError,
 } from './settingActions';
 
 export const fetchCurrentCurrency = async (dispatch) => {
@@ -19,4 +22,17 @@ export const fetchCurrencyPosition = async (dispatch) => {
     const response = await getCurrencyPosition();
     dispatch(fetchCurrencyPositionSuccess(response.data?.value));
   } catch (error) {}
+};
+
+export const fetchSettings = async (dispatch) => {
+  dispatch(fetchSettingsPending());
+  try {
+    await Promise.all([
+      fetchCurrentCurrency(dispatch),
+      fetchCurrencyPosition(dispatch),
+    ]);
+    dispatch(fetchSettingsSuccess());
+  } catch (error) {
+    dispatch(fetchSettingsError(error));
+  }
 };

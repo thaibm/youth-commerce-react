@@ -16,10 +16,7 @@ import withRedux from 'next-redux-wrapper';
 import { initStore } from '../store/store';
 import { DefaultSeo } from 'next-seo';
 import GoTop from '../components/Shared/GoTop';
-import {
-  fetchCurrentCurrency,
-  fetchCurrencyPosition,
-} from '../store/setting/settingFetcher';
+import { fetchSettings } from '../store/setting/settingFetcher';
 import { getCartState } from '../utils/localStorage';
 import { initialCartState } from '../store/cart/cartActions';
 
@@ -35,8 +32,7 @@ export default withRedux(initStore)(
 
     componentWillMount() {
       const { store } = this.props;
-      fetchCurrentCurrency(store.dispatch);
-      fetchCurrencyPosition(store.dispatch);
+      fetchSettings(store.dispatch);
     }
 
     componentDidMount() {

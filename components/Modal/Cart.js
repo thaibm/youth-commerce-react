@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Link from 'next/link';
-import NumberFormat from 'react-number-format';
+import CurrencyCost from '../Shared/CurrencyCost';
 
 class Cart extends Component {
   state = {
@@ -11,39 +11,6 @@ class Cart extends Component {
   closeCart = () => {
     this.props.onClick(this.state.display);
   };
-
-  renderCurrency(rawHTML) {
-    return React.createElement('span', {
-      dangerouslySetInnerHTML: { __html: rawHTML },
-    });
-  }
-
-  renderCost(ammount) {
-    const { currency, currencyPosition } = this.props;
-    if (currencyPosition === 'left') {
-      return (
-        <span className="price">
-          {this.renderCurrency(currency.symbol)}
-          <NumberFormat
-            value={ammount}
-            displayType={'text'}
-            thousandSeparator={true}
-          />
-        </span>
-      );
-    } else {
-      return (
-        <span className="price">
-          <NumberFormat
-            value={ammount}
-            displayType={'text'}
-            thousandSeparator={true}
-          />
-          {this.renderCurrency(currency.symbol)}
-        </span>
-      );
-    }
-  }
 
   render() {
     let { products, total } = this.props;
@@ -89,7 +56,9 @@ class Cart extends Component {
                           <div className="product-price">
                             <span>{product.quantity}</span>
                             <span>x</span>
-                            {this.renderCost(product.price)}
+                            <CurrencyCost
+                              ammount={product.price}
+                            ></CurrencyCost>
                           </div>
                         </div>
                       </div>
@@ -100,7 +69,9 @@ class Cart extends Component {
               <div className="product-cart-subtotal">
                 <span>Subtotal</span>
 
-                <span className="subtotal">{this.renderCost(total)}</span>
+                <span className="subtotal">
+                  <CurrencyCost ammount={total}></CurrencyCost>
+                </span>
               </div>
 
               <div className="product-cart-btn">
