@@ -4,6 +4,7 @@ import {
   FETCH_SETTINGS_PENDING,
   FETCH_SETTINGS_ERROR,
   FETCH_SETTINGS_SUCCESS,
+  FETCH_PAYMENT_GATEWAYS_SUCCESS,
 } from './settingActions';
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   error: null,
   currency: null,
   currencyPosition: '',
+  paymentGateways: []
 };
 
 export const settingReducer = (state = initialState, action) => {
@@ -40,6 +42,11 @@ export const settingReducer = (state = initialState, action) => {
       return {
         ...state,
         currencyPosition: action.position,
+      };
+    case FETCH_PAYMENT_GATEWAYS_SUCCESS:
+      return {
+        ...state,
+        paymentGateways: action.paymentGateways,
       };
     default:
       return state;

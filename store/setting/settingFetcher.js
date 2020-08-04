@@ -1,6 +1,7 @@
 import {
   getCurrentCurrency,
   getCurrencyPosition,
+  getPaymentGateways,
 } from '../../api/modules/setting';
 import {
   fetchCurrencySuccess,
@@ -8,6 +9,7 @@ import {
   fetchSettingsPending,
   fetchSettingsSuccess,
   fetchSettingsError,
+  fetchPaymentGatewaysSuccess,
 } from './settingActions';
 
 export const fetchCurrentCurrency = async (dispatch) => {
@@ -35,4 +37,13 @@ export const fetchSettings = async (dispatch) => {
   } catch (error) {
     dispatch(fetchSettingsError(error));
   }
+};
+
+export const fetchPaymentGateways = () => {
+  return async (dispatch) => {
+    try {
+      const { data } = await getPaymentGateways();
+      dispatch(fetchPaymentGatewaysSuccess(data.filter(gateway => gateway.enabled)));
+    } catch (error) {}
+  };
 };
