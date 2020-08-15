@@ -6,14 +6,71 @@ import Payment from '../payments/Payment';
 import useForm from './userForm';
 import { fetchPaymentGateways } from '../../store/setting/settingFetcher';
 import { bindActionCreators } from 'redux';
+import { createOrder } from '../../api/modules/checkout';
 
-function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
+function CheckoutForm({
+  products,
+  total,
+  shipping,
+  fetchPaymentGateways,
+  paymentGateways,
+}) {
   useEffect(() => {
     fetchPaymentGateways();
   }, []);
 
-  function handleSubmit() {
-    console.log('Form submitted.');
+  function buildFormData(formData, data, parentKey) {
+    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+      Object.keys(data).forEach(key => {
+        buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      });
+    } else {
+      const value = data == null ? '' : data;
+  
+      formData.append(parentKey, value);
+    }
+  }
+  
+  const handleSubmit = async () => {
+    const orderData = {
+      payment_method: state.paymentMethod.value,
+      // payment_method_title: 'Direct Bank Transfer',
+      // set_paid: true,
+      billing: {
+        first_name: state.firstName.value,
+        last_name: state.lastName.value,
+        address_1: state.address.value,
+        address_2: '',
+        city: state.city.value,
+        state: state.state.value,
+        postcode: '',
+        country: state.state.value,
+        email: state.email.value,
+        phone: state.phone.value
+      },
+      shipping: {
+        first_name: state.firstName.value,
+        last_name: state.lastName.value,
+        address_1: state.address.value,
+        address_2: '',
+        city: state.city.value,
+        state: state.state.value,
+        postcode: '',
+        country: state.state.value
+      },
+      line_items: products.map(p => ({
+        product_id: p.id,
+        quantity: p.quantity
+      })),
+      shipping_lines: []
+    };
+
+    let formData = new FormData();
+    buildFormData(formData, orderData);
+
+    try {
+      await createOrder(formData);
+    } catch (error) { }
   }
 
   let totalAmount = (total + shipping).toFixed(2);
@@ -23,10 +80,11 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
     lastName: { value: '', error: '' },
     address: { value: '', error: '' },
     city: { value: '', error: '' },
-    // state: {value: "", error: ""},
+    state: { value: "", error: "" },
     // zip: {value: "", error: ""},
     email: { value: '', error: '' },
     phone: { value: '', error: '' },
+    paymentMethod: { value: '', error: '' }
   };
 
   const validationStateSchema = {
@@ -46,6 +104,13 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
       },
     },
 
+    paymentMethod: {
+      required: true,
+      validator: {
+        error: 'Payment Method is required.',
+      },
+    },
+
     address: {
       required: true,
       validator: {
@@ -60,12 +125,12 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
       },
     },
 
-    // state: {
-    //     required: true,
-    //     validator: {
-    //         error: "Invalid last name format."
-    //     }
-    // },
+    state: {
+      required: true,
+      validator: {
+        error: "Invalid last name format."
+      }
+    },
 
     // zip: {
     //     required: true,
@@ -207,7 +272,7 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
                     </div>
                   </div>
 
-                  <div className="col-lg-12 col-md-6">
+                  <div className="col-lg-6 col-md-6">
                     <div className="form-group">
                       <label>
                         Town / City <span className="required">*</span>
@@ -225,19 +290,19 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
                     </div>
                   </div>
 
-                  {/* <div className="col-lg-6 col-md-6">
-                                        <div className="form-group">
-                                            <label>State / County <span className="required">*</span></label>
-                                            <input 
-                                                type="text" 
-                                                name="state"
-                                                className="form-control" 
-                                                onChange={handleOnChange}
-                                                value={state.state.value}
-                                            />
-                                            {state.state.error && <p style={errorStyle}>{state.state.error}</p>}
-                                        </div>
-                                    </div> */}
+                  <div className="col-lg-6 col-md-6">
+                    <div className="form-group">
+                      <label>State / County <span className="required">*</span></label>
+                      <input
+                        type="text"
+                        name="state"
+                        className="form-control"
+                        onChange={handleOnChange}
+                        value={state.state.value}
+                      />
+                      {state.state.error && <p style={errorStyle}>{state.state.error}</p>}
+                    </div>
+                  </div>
 
                   {/* <div className="col-lg-6 col-md-6">
                                         <div className="form-group">
@@ -344,35 +409,23 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
                 <OrderSummary />
 
                 <div className="payment-method">
-                  <p>
-                    <input
-                      type="radio"
-                      id="direct-bank-transfer"
-                      name="radio-group"
-                      defaultChecked={true}
-                    />
-                    <label htmlFor="direct-bank-transfer">
-                      Direct Bank Transfer
-                    </label>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order will not
-                    be shipped until the funds have cleared in our account.
-                  </p>
-                  <p>
-                    <input type="radio" id="paypal" name="radio-group" />
-                    <label htmlFor="paypal">PayPal</label>
-                  </p>
-                  <p>
-                    <input
-                      type="radio"
-                      id="cash-on-delivery"
-                      name="radio-group"
-                    />
-                    <label htmlFor="cash-on-delivery">Cash on Delivery</label>
-                  </p>
+                  {paymentGateways.map((method, index) => (
+                    <p key={method.id}>
+                      <input
+                        type="radio"
+                        id={method.id}
+                        name="paymentMethod"
+                        value={method.id}
+                        checked={state.paymentMethod.value === method.id}
+                        onChange={handleOnChange}
+                      ></input>
+                      <label htmlFor={method.id}>{method.title}</label>
+                      {method.description}
+                    </p>
+                  ))}
                 </div>
 
-                <Payment amount={totalAmount * 100} disabled={disable} />
+                <Payment amount={totalAmount} disabled={disable} />
               </div>
             </div>
           </div>
@@ -384,8 +437,10 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
 
 const mapStateToProps = (state) => {
   return {
+    products: state.cartReducer.addedItems,
     total: state.cartReducer.total,
     shipping: state.cartReducer.shipping,
+    paymentGateways: state.settingReducer.paymentGateways,
   };
 };
 
