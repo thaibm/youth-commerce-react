@@ -7,13 +7,18 @@ import useForm from './userForm';
 import { fetchPaymentGateways } from '../../store/setting/settingFetcher';
 import { bindActionCreators } from 'redux';
 
-function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
+function CheckoutForm({
+  total,
+  shipping,
+  fetchPaymentGateways,
+  paymentGateways,
+}) {
   useEffect(() => {
     fetchPaymentGateways();
   }, []);
 
   function handleSubmit() {
-    console.log('Form submitted.');
+    console.log('Form submitted.', state);
   }
 
   let totalAmount = (total + shipping).toFixed(2);
@@ -344,32 +349,18 @@ function CheckoutForm({ total, shipping, fetchPaymentGateways }) {
                 <OrderSummary />
 
                 <div className="payment-method">
-                  <p>
-                    <input
-                      type="radio"
-                      id="direct-bank-transfer"
-                      name="radio-group"
-                      defaultChecked={true}
-                    />
-                    <label htmlFor="direct-bank-transfer">
-                      Direct Bank Transfer
-                    </label>
-                    Make your payment directly into our bank account. Please use
-                    your Order ID as the payment reference. Your order will not
-                    be shipped until the funds have cleared in our account.
-                  </p>
-                  <p>
-                    <input type="radio" id="paypal" name="radio-group" />
-                    <label htmlFor="paypal">PayPal</label>
-                  </p>
-                  <p>
-                    <input
-                      type="radio"
-                      id="cash-on-delivery"
-                      name="radio-group"
-                    />
-                    <label htmlFor="cash-on-delivery">Cash on Delivery</label>
-                  </p>
+                  {paymentGateways.map((method, index) => (
+                    <p key={method.id}>
+                      <input
+                        type="radio"
+                        id={method.id}
+                        name="radio-group"
+                        defaultChecked={index === 0}
+                      ></input>
+                      <label htmlFor={method.id}>{method.title}</label>
+                      {method.description}
+                    </p>
+                  ))}
                 </div>
 
                 <Payment amount={totalAmount * 100} disabled={disable} />
@@ -386,6 +377,7 @@ const mapStateToProps = (state) => {
   return {
     total: state.cartReducer.total,
     shipping: state.cartReducer.shipping,
+    paymentGateways: state.settingReducer.paymentGateways,
   };
 };
 

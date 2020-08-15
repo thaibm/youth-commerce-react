@@ -8,7 +8,7 @@ import { resetCart } from '../../store/cart/cartActions';
 
 class Payments extends React.Component {
     handleClick = () => {
-        this.props.resetCart(); 
+        // this.props.resetCart(); 
         toast.success('Order has been confirmed', {
             position: "top-center",
             autoClose: 3000,
@@ -18,7 +18,7 @@ class Payments extends React.Component {
             draggable: true
         });
 
-        setTimeout(function(){ Router.push('/thankyou'); }, 3000);
+        // setTimeout(function(){ Router.push('/thankyou'); }, 3000);
     }
     render(){
         let { amount } = this.props;
