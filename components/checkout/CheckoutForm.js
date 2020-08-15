@@ -6,8 +6,10 @@ import Payment from '../payments/Payment';
 import useForm from './userForm';
 import { fetchPaymentGateways } from '../../store/setting/settingFetcher';
 import { bindActionCreators } from 'redux';
+import { createOrder } from '../../api/modules/checkout';
 
 function CheckoutForm({
+  products,
   total,
   shipping,
   fetchPaymentGateways,
@@ -17,8 +19,58 @@ function CheckoutForm({
     fetchPaymentGateways();
   }, []);
 
-  function handleSubmit() {
-    console.log('Form submitted.', state);
+  function buildFormData(formData, data, parentKey) {
+    if (data && typeof data === 'object' && !(data instanceof Date) && !(data instanceof File)) {
+      Object.keys(data).forEach(key => {
+        buildFormData(formData, data[key], parentKey ? `${parentKey}[${key}]` : key);
+      });
+    } else {
+      const value = data == null ? '' : data;
+  
+      formData.append(parentKey, value);
+    }
+  }
+  
+  const handleSubmit = async () => {
+    const orderData = {
+      payment_method: state.paymentMethod.value,
+      // payment_method_title: 'Direct Bank Transfer',
+      // set_paid: true,
+      billing: {
+        first_name: state.firstName.value,
+        last_name: state.lastName.value,
+        address_1: state.address.value,
+        address_2: '',
+        city: state.city.value,
+        state: state.state.value,
+        postcode: '',
+        country: state.state.value,
+        email: state.email.value,
+        phone: state.phone.value
+      },
+      shipping: {
+        first_name: state.firstName.value,
+        last_name: state.lastName.value,
+        address_1: state.address.value,
+        address_2: '',
+        city: state.city.value,
+        state: state.state.value,
+        postcode: '',
+        country: state.state.value
+      },
+      line_items: products.map(p => ({
+        product_id: p.id,
+        quantity: p.quantity
+      })),
+      shipping_lines: []
+    };
+
+    let formData = new FormData();
+    buildFormData(formData, orderData);
+
+    try {
+      await createOrder(formData);
+    } catch (error) { }
   }
 
   let totalAmount = (total + shipping).toFixed(2);
@@ -28,10 +80,11 @@ function CheckoutForm({
     lastName: { value: '', error: '' },
     address: { value: '', error: '' },
     city: { value: '', error: '' },
-    // state: {value: "", error: ""},
+    state: { value: "", error: "" },
     // zip: {value: "", error: ""},
     email: { value: '', error: '' },
     phone: { value: '', error: '' },
+    paymentMethod: { value: '', error: '' }
   };
 
   const validationStateSchema = {
@@ -51,6 +104,13 @@ function CheckoutForm({
       },
     },
 
+    paymentMethod: {
+      required: true,
+      validator: {
+        error: 'Payment Method is required.',
+      },
+    },
+
     address: {
       required: true,
       validator: {
@@ -65,12 +125,12 @@ function CheckoutForm({
       },
     },
 
-    // state: {
-    //     required: true,
-    //     validator: {
-    //         error: "Invalid last name format."
-    //     }
-    // },
+    state: {
+      required: true,
+      validator: {
+        error: "Invalid last name format."
+      }
+    },
 
     // zip: {
     //     required: true,
@@ -212,7 +272,7 @@ function CheckoutForm({
                     </div>
                   </div>
 
-                  <div className="col-lg-12 col-md-6">
+                  <div className="col-lg-6 col-md-6">
                     <div className="form-group">
                       <label>
                         Town / City <span className="required">*</span>
@@ -230,19 +290,19 @@ function CheckoutForm({
                     </div>
                   </div>
 
-                  {/* <div className="col-lg-6 col-md-6">
-                                        <div className="form-group">
-                                            <label>State / County <span className="required">*</span></label>
-                                            <input 
-                                                type="text" 
-                                                name="state"
-                                                className="form-control" 
-                                                onChange={handleOnChange}
-                                                value={state.state.value}
-                                            />
-                                            {state.state.error && <p style={errorStyle}>{state.state.error}</p>}
-                                        </div>
-                                    </div> */}
+                  <div className="col-lg-6 col-md-6">
+                    <div className="form-group">
+                      <label>State / County <span className="required">*</span></label>
+                      <input
+                        type="text"
+                        name="state"
+                        className="form-control"
+                        onChange={handleOnChange}
+                        value={state.state.value}
+                      />
+                      {state.state.error && <p style={errorStyle}>{state.state.error}</p>}
+                    </div>
+                  </div>
 
                   {/* <div className="col-lg-6 col-md-6">
                                         <div className="form-group">
@@ -354,8 +414,10 @@ function CheckoutForm({
                       <input
                         type="radio"
                         id={method.id}
-                        name="radio-group"
-                        defaultChecked={index === 0}
+                        name="paymentMethod"
+                        value={method.id}
+                        checked={state.paymentMethod.value === method.id}
+                        onChange={handleOnChange}
                       ></input>
                       <label htmlFor={method.id}>{method.title}</label>
                       {method.description}
@@ -363,7 +425,7 @@ function CheckoutForm({
                   ))}
                 </div>
 
-                <Payment amount={totalAmount * 100} disabled={disable} />
+                <Payment amount={totalAmount} disabled={disable} />
               </div>
             </div>
           </div>
@@ -375,6 +437,7 @@ function CheckoutForm({
 
 const mapStateToProps = (state) => {
   return {
+    products: state.cartReducer.addedItems,
     total: state.cartReducer.total,
     shipping: state.cartReducer.shipping,
     paymentGateways: state.settingReducer.paymentGateways,

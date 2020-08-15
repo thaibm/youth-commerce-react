@@ -3824,25 +3824,26 @@ Checkout CSS
     }
     .order-btn {
         margin-top: 15px;
+        
+        .btn {
+            width: 100%;
+        }
+        .btn-primary {
+            &.btn-disabled {
+                background-color: #717070;
+                border-color: #717070;
+                cursor: not-allowed;
+
+                &:hover {
+                    background-color: transparent;
+                    border-color: $black-color;
+                }
+            }
+        }
 
         span {
             display: block;
 
-            .btn {
-                width: 100%;
-            }
-            .btn-primary {
-                &.btn-disabled {
-                    background-color: #717070;
-                    border-color: #717070;
-                    cursor: not-allowed;
-
-                    &:hover {
-                        background-color: transparent;
-                        border-color: $black-color;
-                    }
-                }
-            }
         }
     }
 }

@@ -11,7 +11,7 @@ class Payments extends React.Component {
         // this.props.resetCart(); 
         toast.success('Order has been confirmed', {
             position: "top-center",
-            autoClose: 3000,
+            autoClose: 1000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -20,22 +20,21 @@ class Payments extends React.Component {
 
         // setTimeout(function(){ Router.push('/thankyou'); }, 3000);
     }
-    render(){
-        let { amount } = this.props;
-        const onToken = async token => {
-            const body = {
-                amount: amount,
-                token: token
-            };  
-            await axios.post("/api/stripe/checkout", body);
-        };
+    render() {
+        // const onToken = async token => {
+        //     const body = {
+        //         amount: amount,
+        //         token: token
+        //     };
+        //     await axios.post("/api/stripe/checkout", body);
+        // };
 
         return (
             <React.Fragment>
                 <ToastContainer transition={Zoom} />
 
                 <div className="order-btn">
-                    <StripeCheckout 
+                    {/* <StripeCheckout 
                         name="Novine"
                         description="React Next eCommerce Templates"
                         amount={amount}
@@ -45,17 +44,17 @@ class Payments extends React.Component {
                         billingAddress={false}
                         closed={this.handleClick}
                     >
-                        <button disabled={this.props.disabled} className={`btn btn-primary ${this.props.disabled ? 'btn-disabled' : ''}`} >
-                            Place Order
+                    </StripeCheckout> */}
+                    <button disabled={this.props.disabled} className={`btn btn-primary ${this.props.disabled ? 'btn-disabled' : ''}`} onClick={this.handleClick} >
+                        Place Order
                         </button>
-                    </StripeCheckout>
                 </div>
             </React.Fragment>
         );
     }
 }
 
-const mapDispatchToProps= (dispatch)=>{
+const mapDispatchToProps = (dispatch) => {
     return {
         resetCart: () => { dispatch(resetCart()) }
     }
