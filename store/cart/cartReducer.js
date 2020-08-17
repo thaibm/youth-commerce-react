@@ -555,22 +555,25 @@ export const cartReducer = (state = initState, action) => {
   }
 
   if (action.type === ADD_QUANTITY) {
-    let addedItem = state.products.find((item) => item.id === action.id);
+    let addedItem = state.addedItems.find((item) => item.id === action.id);
     addedItem.quantity += 1;
     let newTotal = state.total + addedItem.price;
-    return {
+    const newState = {
       ...state,
       total: newTotal,
     };
+    setCartState(newState);
+    return newState;
   }
 
   if (action.type === SUB_QUANTITY) {
-    let addedItem = state.products.find((item) => item.id === action.id);
+    let addedItem = state.addedItems.find((item) => item.id === action.id);
+    let newState;
     //if the qt == 0 then it should be removed
     if (addedItem.quantity === 1) {
       let new_items = state.addedItems.filter((item) => item.id !== action.id);
       let newTotal = state.total - addedItem.price;
-      return {
+      newState = {
         ...state,
         addedItems: new_items,
         total: newTotal,
@@ -578,11 +581,13 @@ export const cartReducer = (state = initState, action) => {
     } else {
       addedItem.quantity -= 1;
       let newTotal = state.total - addedItem.price;
-      return {
+      newState = {
         ...state,
         total: newTotal,
       };
     }
+    setCartState(newState);
+    return newState;
   }
 
   if (action.type === ADD_SHIPPING) {
