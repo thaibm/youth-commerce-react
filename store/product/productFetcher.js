@@ -17,7 +17,7 @@ const mapProducts = (pro) => {
   return {
     id: pro.id,
     title: pro.name,
-    price: pro.price,
+    price: Number(pro.price),
     priceHtml: pro.price_html,
     imageSrc,
     imageHoverSrc: imageSrc,
