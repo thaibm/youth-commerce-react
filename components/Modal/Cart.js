@@ -57,7 +57,7 @@ class Cart extends Component {
                             <span>{product.quantity}</span>
                             <span>x</span>
                             <CurrencyCost
-                              ammount={product.price}
+                              amount={product.price}
                             ></CurrencyCost>
                           </div>
                         </div>
@@ -70,7 +70,7 @@ class Cart extends Component {
                 <span>Subtotal</span>
 
                 <span className="subtotal">
-                  <CurrencyCost ammount={total}></CurrencyCost>
+                  <CurrencyCost amount={total}></CurrencyCost>
                 </span>
               </div>
 

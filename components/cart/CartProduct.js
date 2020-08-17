@@ -3,6 +3,7 @@ import Link from "next/link";
 import { connect } from 'react-redux';
 import { removeItem, addQuantity, subtractQuantity } from '../../store/cart/cartActions';
 import { ToastContainer, toast, Slide } from 'react-toastify';
+import CurrencyCost from '../Shared/CurrencyCost';
 
 class CartProduct extends Component {
 
@@ -36,7 +37,7 @@ class CartProduct extends Component {
                         <td className="product-thumbnail">
                             <Link href="#">
                                 <a>
-                                    <img src={data.image} alt="item" />
+                                    <img src={data.imageSrc} alt="item" />
                                 </a>
                             </Link>
                         </td>
@@ -45,15 +46,15 @@ class CartProduct extends Component {
                             <Link href="#">
                                 <a>{data.title}</a>
                             </Link>
-                            <ul>
+                            {/* <ul>
                                 <li>Color: <strong>Light Blue</strong></li>
                                 <li>Size: <strong>XL</strong></li>
                                 <li>Material: <strong>Cotton</strong></li>
-                            </ul>
+                            </ul> */}
                         </td>
 
                         <td className="product-price">
-                            <span className="unit-amount">${data.price}</span>
+                            <CurrencyCost amount={data.price}></CurrencyCost>
                         </td>
 
                         <td className="product-quantity">
@@ -82,8 +83,7 @@ class CartProduct extends Component {
                         </td>
 
                         <td className="product-subtotal">
-                            <span className="subtotal-amount">${data.price * data.quantity}</span>
-
+                            <CurrencyCost amount={data.price * data.quantity}></CurrencyCost>
                             <Link href="#">
                                 <a
                                     className="remove"
@@ -98,7 +98,7 @@ class CartProduct extends Component {
             })
         ): (
             <tr>
-                <td className="product-thumbnail" colspan="5">
+                <td className="product-thumbnail" colSpan="5">
                     <p>Empty.</p>
                 </td>
             </tr>

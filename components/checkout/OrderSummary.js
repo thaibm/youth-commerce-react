@@ -31,7 +31,7 @@ class OrderSummary extends Component {
                 <td className="product-total">
                   <span className="subtotal-amount">
                     <CurrencyCost
-                      ammount={product.price * product.quantity}
+                      amount={product.price * product.quantity}
                     ></CurrencyCost>
                   </span>
                 </td>
@@ -45,7 +45,7 @@ class OrderSummary extends Component {
 
               <td className="order-subtotal-price">
                 <span className="order-subtotal-amount">
-                  <CurrencyCost ammount={this.props.total}></CurrencyCost>
+                  <CurrencyCost amount={this.props.total}></CurrencyCost>
                 </span>
               </td>
             </tr>
@@ -68,7 +68,7 @@ class OrderSummary extends Component {
               <td className="product-subtotal">
                 <span className="subtotal-amount">
                   <CurrencyCost
-                    ammount={this.props.total + this.props.shipping}
+                    amount={this.props.total + this.props.shipping}
                   ></CurrencyCost>
                 </span>
               </td>
