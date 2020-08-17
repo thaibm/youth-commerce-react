@@ -9,13 +9,13 @@ class CurrencyCost extends Component {
     });
   }
 
-  renderCost(ammount) {
+  renderCost(amount) {
     const { currency, currencyPosition } = this.props;
 
     if (!currency || !currencyPosition) {
       return (
         <NumberFormat
-          value={ammount}
+          value={amount}
           displayType={'text'}
           thousandSeparator={true}
         />
@@ -27,7 +27,7 @@ class CurrencyCost extends Component {
         <span className="price">
           {this.renderCurrency(currency.symbol)}
           <NumberFormat
-            value={ammount}
+            value={amount}
             displayType={'text'}
             thousandSeparator={true}
           />
@@ -37,7 +37,7 @@ class CurrencyCost extends Component {
       return (
         <span className="price">
           <NumberFormat
-            value={ammount}
+            value={amount}
             displayType={'text'}
             thousandSeparator={true}
           />
@@ -48,8 +48,8 @@ class CurrencyCost extends Component {
   }
 
   render() {
-    const { ammount } = this.props;
-    return this.renderCost(ammount);
+    const { amount } = this.props;
+    return this.renderCost(amount);
   }
 }
 
