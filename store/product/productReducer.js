@@ -3,7 +3,8 @@ import { FETCH_PRODUCTS_PENDING, FETCH_PRODUCTS_SUCCESS, FETCH_PRODUCTS_ERROR, F
 const initialState = {
   pending: false,
   products: [],
-  error: null
+  error: null,
+  currentProduct: null
 }
 
 export const productReducer = (state = initialState, action) => {

@@ -2,6 +2,7 @@ import {
   fetchProductsPending,
   fetchProductsSuccess,
   fetchProductsError,
+  fetchProductByIdSuccess,
 } from './productActions';
 import { getAllProducts, getProductById } from '../../api/modules/product';
 
