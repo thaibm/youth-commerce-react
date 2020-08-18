@@ -2,8 +2,9 @@ import {
   fetchProductsPending,
   fetchProductsSuccess,
   fetchProductsError,
+  fetchProductByIdSuccess,
 } from './productActions';
-import { getAllProducts } from '../../api/modules/product';
+import { getAllProducts, getProductById } from '../../api/modules/product';
 
 const mapProducts = (pro) => {
   const imageSrc =
@@ -37,5 +38,14 @@ export const fetchProducts = (params) => {
     } catch (error) {
       dispatch(fetchProductsError(error));
     }
+  };
+};
+
+export const fetchProductById = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await getProductById(id);
+      dispatch(fetchProductByIdSuccess(data));
+    } catch (error) {}
   };
 };

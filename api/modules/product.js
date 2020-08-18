@@ -5,3 +5,8 @@ export const getAllProducts = (params) => API({
     method: 'GET',
     params
 });
+
+export const getProductById = (id) => API({
+    url: `wc/v3/products/${id}`,
+    method: 'GET'
+});
