@@ -116,7 +116,7 @@ class BestSeller extends Component {
               <div className="col-lg-3 col-sm-6 col-6" key={idx}>
                 <div className="single-product-box">
                   <div className="product-image">
-                    <Link href="/product-details">
+                    <Link href={`/product-details/${product.id}`}>
                       <a>
                         <img src={product.imageSrc} alt="image" />
                         <img src={product.imageHoverSrc} alt="image" />
@@ -152,7 +152,7 @@ class BestSeller extends Component {
 
                   <div className="product-content">
                     <h3>
-                      <Link href="/product-details">
+                      <Link href={`/product-details/${product.id}`}>
                         <a>{product.title}</a>
                       </Link>
                     </h3>
@@ -195,8 +195,8 @@ class BestSeller extends Component {
             product={this.state.product}
           />
         ) : (
-          ''
-        )}
+            ''
+          )}
       </section>
     );
   }
