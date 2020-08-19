@@ -15,6 +15,7 @@ const mapProducts = (pro) => {
     pro.images.length && pro.images[1] && pro.images[1].src
       ? pro.images[1].src
       : require('../../images/quick-view-img.jpg');
+  
   return {
     id: pro.id,
     title: pro.name,
@@ -25,6 +26,7 @@ const mapProducts = (pro) => {
     quickViewImageSrc,
     description: pro.description,
     shortDescription: pro.short_description,
+    images: pro.images.slice(1)
   };
 };
 
@@ -43,9 +45,12 @@ export const fetchProducts = (params) => {
 
 export const fetchProductById = (id) => {
   return async (dispatch) => {
+    dispatch(fetchProductsPending());
     try {
       const { data } = await getProductById(id);
-      dispatch(fetchProductByIdSuccess(data));
-    } catch (error) {}
+      dispatch(fetchProductByIdSuccess(mapProducts(data)));
+    } catch (error) {
+      dispatch(fetchProductsError(error));
+    }
   };
 };

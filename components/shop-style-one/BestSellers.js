@@ -205,9 +205,9 @@ class BestSeller extends Component {
 const mapStateToProps = (state) => {
   const { productReducer } = state;
   return {
-    error: productReducer.pending,
+    error: productReducer.error,
     products: productReducer.products,
-    pending: productReducer.error,
+    pending: productReducer.pending,
     CompareProducts: state.cartReducer.addedItemsToCompare,
   };
 };
