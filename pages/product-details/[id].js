@@ -20,19 +20,26 @@ class Index extends Component {
   }
 
   render() {
+    const { pending, error } = this.props;
+    let productContent = pending ? (
+      <div className="row">Loading...</div>
+    ) : (
+      <div className="row">
+        <ProductImage />
+        <ProductContent />
+        <DetailsTab />
+      </div>
+    );
+    if (error) {
+      productContent = error;
+    }
     return (
       <React.Fragment>
         <Navbar />
         <Breadcrumb title="Belted chino trousers polo" />
 
         <section className="products-details-area pt-60">
-          <div className="container">
-            <div className="row">
-              <ProductImage />
-              <ProductContent />
-              <DetailsTab />
-            </div>
-          </div>
+          <div className="container">{productContent}</div>
 
           <RelatedProducts />
 
@@ -47,9 +54,9 @@ class Index extends Component {
 const mapStateToProps = (state) => {
   const { productReducer } = state;
   return {
-    error: productReducer.pending,
+    error: productReducer.error,
     product: productReducer.currentProduct,
-    pending: productReducer.error,
+    pending: productReducer.pending,
   };
 };
 
