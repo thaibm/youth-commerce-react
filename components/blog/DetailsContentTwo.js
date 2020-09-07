@@ -19,7 +19,7 @@ export class DetailsContentTwo extends Component {
                                         <li>
                                             <i className="far fa-user"></i> 
                                             <Link href="#">
-                                                <a>Novine</a>
+                                                <a>Youth</a>
                                             </Link>
                                         </li>
                                         <li><i className="far fa-calendar-alt"></i> April 08, 2019</li>
@@ -89,7 +89,7 @@ export class DetailsContentTwo extends Component {
                                             <footer className="comment-meta">
                                                 <div className="comment-author vcard">
                                                     <img src={require("../../images/author1.jpg")} className="avatar" alt="image" />
-                                                    <b className="fn">Novine</b>
+                                                    <b className="fn">Youth</b>
                                                     <span className="says">says:</span>
                                                 </div>
 
@@ -119,7 +119,7 @@ export class DetailsContentTwo extends Component {
                                                     <footer className="comment-meta">
                                                         <div className="comment-author vcard">
                                                             <img src={require("../../images/author2.jpg")} className="avatar" alt="image" />
-                                                            <b className="fn">Novine</b>
+                                                            <b className="fn">Youth</b>
                                                             <span className="says">says:</span>
                                                         </div>
             
@@ -150,7 +150,7 @@ export class DetailsContentTwo extends Component {
                                                         <footer className="comment-meta">
                                                             <div className="comment-author vcard">
                                                                 <img src={require("../../images/author3.jpg")} className="avatar" alt="image" />
-                                                                <b className="fn">Novine</b>
+                                                                <b className="fn">Youth</b>
                                                                 <span className="says">says:</span>
                                                             </div>
                 
@@ -180,7 +180,7 @@ export class DetailsContentTwo extends Component {
                                                                 <footer className="comment-meta">
                                                                     <div className="comment-author vcard">
                                                                         <img src={require("../../images/author4.jpg")} className="avatar" alt="image" />
-                                                                        <b className="fn">Novine</b>
+                                                                        <b className="fn">Youth</b>
                                                                         <span className="says">says:</span>
                                                                     </div>
                         
@@ -215,7 +215,7 @@ export class DetailsContentTwo extends Component {
                                             <footer className="comment-meta">
                                                 <div className="comment-author vcard">
                                                     <img src={require("../../images/author2.jpg")} className="avatar" alt="image" />
-                                                    <b className="fn">Novine</b>
+                                                    <b className="fn">Youth</b>
                                                     <span className="says">says:</span>
                                                 </div>
 

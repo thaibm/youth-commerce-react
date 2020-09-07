@@ -80,7 +80,7 @@ class BlogSidebar extends Component {
                         <li>
                             <span className="comment-author-link">
                                 <Link href="#">
-                                    <a>Novine</a>
+                                    <a>Youth</a>
                                 </Link>
                             </span> on <Link href="#"><a>Hello world!</a></Link>
                         </li>
@@ -101,7 +101,7 @@ class BlogSidebar extends Component {
                         <li>
                             <span className="comment-author-link">
                                 <Link href="#">
-                                    <a>Novine</a>
+                                    <a>Youth</a>
                                 </Link>
                             </span> on <Link href="#"><a>Hello world!</a></Link>
                         </li>
