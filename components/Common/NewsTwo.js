@@ -42,7 +42,7 @@ class NewsTwo extends Component {
             <section className="news-area ptb-60">
                 <div className="container">
                     <div className="section-title">
-                        <h2><span className="dot"></span> Novine News</h2>
+                        <h2><span className="dot"></span> Youth News</h2>
                     </div>
 
                     {this.state.display ? <OwlCarousel 
