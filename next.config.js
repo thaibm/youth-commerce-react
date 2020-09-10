@@ -3,5 +3,9 @@ module.exports = withImages({
   webpack(config, options) {
     return config
   },
-  assetPrefix: 'youth-commerce-react'
 })
+
+module.exports = {
+  ...module.exports,
+  assetPrefix: '/youth-commerce-react/',
+}
