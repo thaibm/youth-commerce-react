@@ -5,7 +5,8 @@ module.exports = withImages({
   },
 })
 
-// module.exports = {
-//   ...module.exports,
-//   assetPrefix: '/youth-commerce-react/',
-// }
+module.exports = {
+  ...module.exports,
+  basePath: '/youth-commerce-demo',
+  assetPrefix: '/youth-commerce-demo/',
+}
