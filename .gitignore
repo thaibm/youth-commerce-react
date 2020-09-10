@@ -2,3 +2,5 @@ node_modules/
 .next/
 out/
 out.zip
+public/
+.firebase/

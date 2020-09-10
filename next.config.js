@@ -4,3 +4,8 @@ module.exports = withImages({
     return config
   }
 })
+
+module.exports = {
+  ...module.exports,
+  distDir: './public'
+}
